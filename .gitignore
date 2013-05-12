@@ -1,0 +1,6 @@
+!.gitignore
+elpa/**/*~
+ac-comphist.dat
+autosaves/*
+backups/*
+eshell/*
