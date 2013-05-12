@@ -1,5 +1,6 @@
 !.gitignore
-elpa/**/*~
+*~
+*.elc
 ac-comphist.dat
 autosaves/*
 backups/*
