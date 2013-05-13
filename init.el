@@ -44,35 +44,27 @@
  '(ecb-options-version "2.40"))
 
 ;Custom commands
-(defun my-clear ()
-  (interactive)
-  (let ((comint-buffer-maximum-size 0))
-    (comint-truncate-buffer)))
-
 (defun reload-init ()
 "reload init.el without restarting"
     (interactive)
       (load-file "~/.emacs.d/init.el"))
-
-(defun show-file-name ()
-  "Show the full path file name in the minibuffer."
-  (interactive)
-  (message (buffer-file-name)))
 
 ;custom keys
 ;;;;;;;;;;;;
 ;global
 (global-set-key [(control f9)] 'reload-init)
 (global-set-key [(control f12)] 'describe-key)
-(global-set-key (kbd "C-c \\") 'show-file-name)
 (global-set-key (kbd "M-<up>") 'windmove-up)
 (global-set-key (kbd "M-<right>") 'windmove-right)
 (global-set-key (kbd "M-<down>") 'windmove-down)
 (global-set-key (kbd "M-<left>") 'windmove-left)
-(global-set-key (kbd "M-S-<left>") 'ecb-goto-window-directories)
-(global-set-key (kbd "M-S-<right>") 'ecb-goto-window-edit1)
+(global-set-key (kbd "C-c n") 'flycheck-next-error)
+(global-set-key (kbd "C-c p") 'flycheck-previous-error)
+(global-set-key (kbd "C-c ~") 'flycheck-buffer)
 
 (setq inhibit-startup-message t)
+
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;extra mode configs
 (eval-after-load 'python 
