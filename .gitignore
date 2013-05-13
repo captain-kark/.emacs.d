@@ -5,3 +5,4 @@ ac-comphist.dat
 autosaves/*
 backups/*
 eshell/*
+flymake-init.el
