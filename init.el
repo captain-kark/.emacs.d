@@ -61,6 +61,8 @@
 (global-set-key (kbd "C-c n") 'flycheck-next-error)
 (global-set-key (kbd "C-c p") 'flycheck-previous-error)
 (global-set-key (kbd "C-c ~") 'flycheck-buffer)
+(global-set-key (kbd "C-c /") 'comment-region)
+(global-set-key (kbd "C-c ?") 'uncomment-region)
 
 (setq inhibit-startup-message t)
 
