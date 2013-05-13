@@ -67,7 +67,3 @@
 (setq inhibit-startup-message t)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
-
-;extra mode configs
-(eval-after-load 'python 
-  (load-file "~/.emacs.d/init-py.el"))
