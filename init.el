@@ -17,6 +17,7 @@
 (column-number-mode t)
 
 (require 'ecb)
+(setq ecb-tip-of-the-day nil)
 (ecb-minor-mode t)
 
 (require 'ido)
