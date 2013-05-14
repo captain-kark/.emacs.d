@@ -1,5 +1,6 @@
 !.gitignore
 *~
+*#
 *.elc
 ac-comphist.dat
 autosaves/*
