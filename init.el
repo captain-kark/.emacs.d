@@ -66,5 +66,5 @@
 (global-set-key (kbd "C-c ?") 'uncomment-region)
 
 (setq inhibit-startup-message t)
-
+(setq ring-bell-function 'ignore)
 (add-hook 'after-init-hook #'global-flycheck-mode)
