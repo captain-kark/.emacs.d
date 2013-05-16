@@ -67,4 +67,5 @@
 
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
+(setq global-linum-mode t)
 (add-hook 'after-init-hook #'global-flycheck-mode)
