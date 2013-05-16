@@ -1,0 +1,3 @@
+[submodule "elpa/yasnippet-20130505.2115/snippets/ruby-mode/yasnippet-ruby-mode"]
+	path = elpa/yasnippet-20130505.2115/snippets/ruby-mode/yasnippet-ruby-mode
+	url = git@github.com:bmaland/yasnippet-ruby-mode.git
