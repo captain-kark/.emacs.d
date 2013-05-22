@@ -14,6 +14,8 @@
 (require 'auto-complete)
 (global-auto-complete-mode t)
 
+(require 'color-theme)
+
 (column-number-mode t)
 
 (require 'ecb)
@@ -35,14 +37,15 @@
 
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
- '(safe-local-variable-values (quote ((lexical-binding . t))))
- '(ecb-options-version "2.40"))
+ '(column-number-mode t)
+ '(ecb-options-version "2.40")
+ '(safe-local-variable-values (quote ((lexical-binding . t)))))
 
 ;Custom commands
 (defun reload-init ()
@@ -67,5 +70,17 @@
 
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
-(setq global-linum-mode t)
+(global-linum-mode t)
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+;extra mode configs
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-dark-laptop)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
