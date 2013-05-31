@@ -19,7 +19,7 @@
 
 (column-number-mode t)
 
-(global-linenum-mode t)
+(global-linum-mode t)
 
 (require 'ido)
 (ido-mode t)

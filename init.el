@@ -7,9 +7,9 @@
 (make-directory "~/.emacs.d/autosaves/" t)
 (make-directory "~/.emacs.d/backups/" t)
 
-(add-to-list 'load-path
-	     "~/.emacs.d/elpa/auto-complete-20130503.2013/"
-	     "~/.emacs.d/elpa/ecb-20130406.1406/")
+(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-20130503.2013/")
+(add-to-list 'load-path	"~/.emacs.d/elpa/ecb-20130406.1406/")
+(add-to-list 'load-path	"~/.emacs.d/elpa/markdown-mode-20130328.918/")
 
 (require 'auto-complete)
 (global-auto-complete-mode t)
@@ -24,6 +24,12 @@
 
 (require 'ido)
 (ido-mode t)
+
+(autoload 'markdown-mode "markdown-mode"
+       "Major mode for editing Markdown files" t)
+    (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+    (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+    (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 (require 'shell-pop)
 (shell-pop-set-internal-mode "shell")
@@ -71,6 +77,8 @@
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
 (global-linum-mode t)
+(global-auto-revert-mode t)
+(setq shell-command-switch "-ic")
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;extra mode configs
@@ -85,5 +93,5 @@
  ;; If there is more than one, they won't work right.
  )
 
-(add-to-list 'default-frame-alist '(height . 60))
+(add-to-list 'default-frame-alist '(height . 50))
 (add-to-list 'default-frame-alist '(width . 120))
