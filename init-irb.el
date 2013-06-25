@@ -24,6 +24,9 @@
 (require 'ido)
 (ido-mode t)
 
+(require 'rvm)
+(rvm-use-default)
+
 (require 'yasnippet)
 (yas-global-mode t)
 

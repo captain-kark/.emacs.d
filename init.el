@@ -31,6 +31,9 @@
     (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
     (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+(require 'rvm)
+(rvm-use-default)
+
 (require 'shell-pop)
 (shell-pop-set-internal-mode "shell")
 (shell-pop-set-internal-mode-shell "/bin/bash")
