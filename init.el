@@ -11,6 +11,9 @@
 (add-to-list 'load-path	"~/.emacs.d/elpa/ecb-20130406.1406/")
 (add-to-list 'load-path	"~/.emacs.d/elpa/markdown-mode-20130328.918/")
 
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
 (require 'auto-complete)
 (global-auto-complete-mode t)
 
