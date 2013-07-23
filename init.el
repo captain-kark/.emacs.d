@@ -88,6 +88,7 @@
 (global-auto-revert-mode t)
 (setq shell-command-switch "-ic")
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(setq flycheck-check-syntax-automatically '(save))
 
 ;extra mode configs
 (eval-after-load "color-theme"
