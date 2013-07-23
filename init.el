@@ -70,6 +70,8 @@
 ;global
 (global-set-key [(control f9)] 'reload-init)
 (global-set-key [(control f12)] 'describe-key)
+(global-set-key (kbd "s-{") 'previous-buffer)
+(global-set-key (kbd "s-}") 'next-buffer)
 (global-set-key (kbd "M-<up>") 'windmove-up)
 (global-set-key (kbd "M-<right>") 'windmove-right)
 (global-set-key (kbd "M-<down>") 'windmove-down)
