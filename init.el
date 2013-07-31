@@ -112,5 +112,7 @@
 (add-to-list 'default-frame-alist '(height . 80))
 (add-to-list 'default-frame-alist '(width . 143))
 (put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
 (provide 'init)
 ;;; init.el ends here
