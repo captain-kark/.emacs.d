@@ -87,6 +87,7 @@
 (global-set-key (kbd "C-c /") 'comment-region)
 (global-set-key (kbd "C-c ?") 'uncomment-region)
 
+(show-paren-mode 1)
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
 (global-linum-mode t)
