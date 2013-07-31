@@ -1,7 +1,12 @@
+;;; package -- Summary
+
+;;; Commentary:
+
+;;; Code:
 (make-directory "~/.emacs.d/autosaves/" t)(when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
-  (add-to-list 'package-archives 
+  (add-to-list 'package-archives
 	       '("melpa" . "http://melpa.milkbox.net/packages/") t))
 
 (make-directory "~/.emacs.d/autosaves/" t)
@@ -61,7 +66,7 @@
 
 ;Custom commands
 (defun reload-init ()
-"reload init.el without restarting"
+"Reload init.el without restarting."
     (interactive)
       (load-file "~/.emacs.d/init.el"))
 
@@ -88,6 +93,7 @@
 (global-auto-revert-mode t)
 (setq shell-command-switch "-ic")
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(defvar flycheck-check-syntax-automatically)
 (setq flycheck-check-syntax-automatically '(save))
 
 ;extra mode configs
@@ -105,3 +111,5 @@
 (add-to-list 'default-frame-alist '(height . 80))
 (add-to-list 'default-frame-alist '(width . 143))
 (put 'downcase-region 'disabled nil)
+(provide 'init)
+;;; init.el ends here
