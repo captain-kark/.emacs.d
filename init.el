@@ -86,6 +86,7 @@
 (global-set-key (kbd "C-c ~") 'flycheck-buffer)
 (global-set-key (kbd "C-c /") 'comment-region)
 (global-set-key (kbd "C-c ?") 'uncomment-region)
+(global-set-key (kbd "C-c w") 'whitespace-cleanup)
 
 (show-paren-mode 1)
 (setq inhibit-startup-message t)
