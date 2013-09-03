@@ -12,23 +12,22 @@
 (make-directory "~/.emacs.d/autosaves/" t)
 (make-directory "~/.emacs.d/backups/" t)
 
-(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-20130503.2013/")
-(add-to-list 'load-path	"~/.emacs.d/elpa/ecb-20130406.1406/")
-(add-to-list 'load-path	"~/.emacs.d/elpa/markdown-mode-20130328.918/")
+(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-20130724.1750/")
+(add-to-list 'load-path	"~/.emacs.d/elpa/markdown-mode-20130726.2142/")
 
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+(load-theme 'zenburn t)
+
 (require 'auto-complete)
 (global-auto-complete-mode t)
 
-(require 'color-theme)
-
 (column-number-mode t)
-
-(require 'ecb)
-(setq ecb-tip-of-the-day nil)
-(ecb-minor-mode t)
 
 (require 'ido)
 (ido-mode t)
@@ -39,15 +38,10 @@
     (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
     (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+(require 'multiple-cursors)
+
 (require 'rvm)
 (rvm-use-default)
-
-(require 'shell-pop)
-(shell-pop-set-internal-mode "shell")
-(shell-pop-set-internal-mode-shell "/bin/bash")
-(shell-pop-set-window-height 30)
-(shell-pop-set-window-position "bottom")
-(shell-pop-set-universal-key (kbd "C-c C-t"))
 
 (require 'yasnippet)
 (yas-global-mode t)
@@ -61,14 +55,9 @@
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(column-number-mode t)
- '(ecb-options-version "2.40")
+ '(custom-safe-themes (quote ("3ad55e40af9a652de541140ff50d043b7a8c8a3e73e2a649eb808ba077e75792" default)))
+ '(flycheck-checkers (quote (bash c/c++-clang c/c++-cppcheck coffee-coffeelint css-csslint elixir emacs-lisp emacs-lisp-checkdoc erlang go-gofmt go-build go-test haml haskell-hdevtools haskell-ghc haskell-hlint javascript-jshint json-jsonlint less lua perl php php-phpcs puppet-parser puppet-lint python-flake8 python-pylint rst ruby-rubocop ruby ruby-jruby rust sass scala scss sh-dash sh-bash tex-chktex tex-lacheck xml-xmlstarlet zsh)))
  '(safe-local-variable-values (quote ((lexical-binding . t)))))
-
-;Custom commands
-(defun reload-init ()
-"Reload init.el without restarting."
-    (interactive)
-      (load-file "~/.emacs.d/init.el"))
 
 ;custom keys
 ;;;;;;;;;;;;
@@ -87,28 +76,21 @@
 (global-set-key (kbd "C-c /") 'comment-region)
 (global-set-key (kbd "C-c ?") 'uncomment-region)
 (global-set-key (kbd "C-c w") 'whitespace-cleanup)
+;multiple-cursors
+(global-set-key (kbd "C-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (show-paren-mode 1)
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
 (global-linum-mode t)
 (global-auto-revert-mode t)
-(setq shell-command-switch "-ic")
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (defvar flycheck-check-syntax-automatically)
 (setq flycheck-check-syntax-automatically '(save))
-
-;extra mode configs
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-dark-laptop)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+'flycheck '(setq flycheck-checkers (delq 'html-tidy flycheck-checkers))
 
 (add-to-list 'default-frame-alist '(height . 80))
 (add-to-list 'default-frame-alist '(width . 143))
