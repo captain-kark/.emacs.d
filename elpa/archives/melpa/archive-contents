@@ -212,7 +212,7 @@
 	      (0 2)))
 	    "The WACky WorkSPACE manager for emACS [github]" tar])
  (w3m .
-      [(20130826 546)
+      [(20130902 1802)
        nil "an Emacs interface to w3m [cvs]" tar])
  (volatile-highlights .
 		      [(20130321 2241)
@@ -769,7 +769,7 @@
 	   [(20130312 1839)
 	    nil "Support sequential operation which omitted prefix keys. [github]" single])
  (smartparens .
-	      [(20130902 2006)
+	      [(20130902 2310)
 	       ((cl-lib
 		 (0 1))
 		(dash
@@ -1168,7 +1168,7 @@
 			 (0 3 1)))
 		      "virtualenv API for Emacs Lisp [github]" tar])
  (python-django .
-		[(20130526 1059)
+		[(20130902 1429)
 		 nil "A Jazzy package for managing Django projects [github]" single])
  (pyregexp .
 	   [(20130531 929)
@@ -1301,7 +1301,7 @@
 	   [(20130821 1454)
 	    nil "Major mode for Pig files [github]" single])
  (php-mode .
-	   [(20130901 1532)
+	   [(20130902 1944)
 	    nil "Major mode for editing PHP code [github]" single])
  (php-eldoc .
 	    [(20130328 1526)
@@ -1522,7 +1522,7 @@
 	      (0 1)))
 	    "Blog from Org mode to wordpress [github]" tar])
  (org-trello .
-	     [(20130901 1257)
+	     [(20130902 2305)
 	      ((org
 		(8 0 7))
 	       (dash
@@ -1657,9 +1657,6 @@
 		       ((emacs
 			 (24 2)))
 		       "Display org properties in the agenda buffer. [github]" single])
- (openwith .
-	   [(20120531 1636)
-	    nil "Open files with external programs [hg]" single])
  (openstack-cgit-browse-file .
 			     [(20130819 1127)
 			      nil "Browse the current file in OpenStack cgit [github]" single])
@@ -1747,7 +1744,7 @@
 		(0 1 1)))
 	      "nrepl extensions for ritz [github]" single])
  (nrepl-eval-sexp-fu .
-		     [(20130220 2142)
+		     [(20130902 2040)
 		      nil "Tiny functionality enhancements for evaluating sexps. [github]" single])
  (nrepl-decompile .
 		  [(20130726 1043)
@@ -1770,9 +1767,6 @@
  (notmuch .
 	  [(20130827 753)
 	   nil "No description available. [git]" tar])
- (nose .
-       [(20110804 819)
-	nil "Easy Python test running in Emacs [hg]" single])
  (noflet .
 	 [(20130901 1722)
 	  nil "locally override functions [github]" single])
@@ -1825,7 +1819,7 @@
 	      [(20090804 2252)
 	       nil "Major mode to edit muttrc under Emacs [wiki]" single])
  (mustang-theme .
-		[(20130831 2307)
+		[(20130902 2022)
 		 nil "port of vim's mustang theme [github]" single])
  (mustache-mode .
 		[(20110927 1253)
@@ -1926,11 +1920,6 @@
  (mmm-mode .
 	   [(20130606 7)
 	    nil "Allow Multiple Major Modes in a buffer [github]" tar])
- (mmm-mako .
-	   [(20121019 2351)
-	    ((mmm-mode
-	      (0 4 8)))
-	    "MMM submode class for Mako Templates [hg]" single])
  (misc-fns .
 	   [(20130723 2346)
 	    nil "Miscellaneous non-interactive functions. [wiki]" single])
@@ -2335,9 +2324,9 @@
 	(js2-mode
 	 (0)))
        "An emacs interface to webkit and mozilla debuggers [github]" tar])
- (js3-mode .
-	   [(20130829 1622)
-	    nil "No description available. [github]" tar])
+ (js3 .
+      [(20130829 1622)
+       nil "No description available. [github]" single])
  (js2-refactor .
 	       [(20130622 1018)
 		((js2-mode
@@ -2556,7 +2545,7 @@
 	     [(20130723 2333)
 	      nil "Extensions to `icomplete.el'. [wiki]" single])
  (icicles .
-	  [(20130815 1612)
+	  [(20130902 2335)
 	   nil "Minibuffer input completion and cycling. [wiki]" tar])
  (ibuffer-vc .
 	     [(20130728 926)
@@ -3021,7 +3010,7 @@
 		       (0 1 1)))
 		     "Fringe version of git-gutter.el [github]" single])
  (git-gutter+ .
-	      [(20130902 1526)
+	      [(20130902 2218)
 	       ((git-commit-mode
 		 (1 0)))
 	       "Manage Git hunks straight from the buffer [github]" single])
@@ -3433,11 +3422,11 @@
 	      (0 3 1)))
 	   "File activity logger [github]" single])
  (f .
-    [(20130902 1649)
+    [(20130902 2040)
      ((s
-       (1 6 1))
+       (1 7 0))
       (dash
-       (1 5 0)))
+       (2 2 0)))
      "Modern API for working with files and directories [github]" single])
  (ez-query-replace .
 		   [(20130821 1808)
@@ -3627,7 +3616,7 @@
 	  [(20130407 1548)
 	   nil "A networked notification system for emacs [github]" tar])
  (enh-ruby-mode .
-		[(20130806 1450)
+		[(20130902 2320)
 		 nil "Major mode for editing Ruby files [github]" tar])
  (enclose .
 	  [(20121008 1814)
@@ -4698,6 +4687,17 @@
  (abc-mode .
 	   [(20130607 917)
 	    nil "Major mode for editing abc music files [github]" single])
+ (openwith .
+	   [(20120531 1636)
+	    nil "Open files with external programs [hg]" single])
+ (nose .
+       [(20110804 819)
+	nil "Easy Python test running in Emacs [hg]" single])
+ (mmm-mako .
+	   [(20121019 2351)
+	    ((mmm-mode
+	      (0 4 8)))
+	    "MMM submode class for Mako Templates [hg]" single])
  (org-mac-link-grabber .
 		       [(20130514 1519)
 			nil "Grab links and url from various mac [git]" single])
