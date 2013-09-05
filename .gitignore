@@ -7,3 +7,4 @@ autosaves/*
 backups/*
 eshell/*
 flycheck-init.el
+.mc-lists.el
