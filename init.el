@@ -59,6 +59,12 @@
  '(flycheck-checkers (quote (bash c/c++-clang c/c++-cppcheck coffee-coffeelint css-csslint elixir emacs-lisp emacs-lisp-checkdoc erlang go-gofmt go-build go-test haml haskell-hdevtools haskell-ghc haskell-hlint javascript-jshint json-jsonlint less lua perl php php-phpcs puppet-parser puppet-lint python-flake8 python-pylint rst ruby-rubocop ruby ruby-jruby rust sass scala scss sh-dash sh-bash tex-chktex tex-lacheck xml-xmlstarlet zsh)))
  '(safe-local-variable-values (quote ((lexical-binding . t)))))
 
+;Custom commands
+(defun reload-init ()
+"Reload init.el without restarting."
+    (interactive)
+      (load-file "~/.emacs.d/init.el"))
+
 ;custom keys
 ;;;;;;;;;;;;
 ;global
