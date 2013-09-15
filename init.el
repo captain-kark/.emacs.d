@@ -13,41 +13,44 @@
 (make-directory "~/.emacs.d/backups/" t)
 
 (add-to-list 'load-path
-	     "~/.emacs.d/elpa/auto-complete-20130503.2013/"
-	     "~/.emacs.d/elpa/ecb-20130406.1406/")
+	     "~/.emacs.d/elpa/auto-complete-20130503.2013")
+
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 (require 'auto-complete)
 (global-auto-complete-mode t)
 
 (column-number-mode t)
 
-(require 'ecb)
-(setq ecb-tip-of-the-day nil)
-(ecb-minor-mode t)
-
 (require 'ido)
 (ido-mode t)
 
-(require 'shell-pop)
-(shell-pop-set-internal-mode "shell")
-(shell-pop-set-internal-mode-shell "/bin/bash")
-(shell-pop-set-window-height 30)
-(shell-pop-set-window-position "bottom")
-(shell-pop-set-universal-key (kbd "C-c C-t"))
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(require 'multiple-cursors)
+
+(require 'rainbow-mode)
+
+(require 'rvm)
+(rvm-use-default)
 
 (require 'yasnippet)
 (yas-global-mode t)
 
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
- '(safe-local-variable-values (quote ((lexical-binding . t))))
- '(ecb-options-version "2.40"))
+ '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/")))))
 
 ;Custom commands
 (defun reload-init ()
@@ -60,6 +63,9 @@
 ;global
 (global-set-key [(control f9)] 'reload-init)
 (global-set-key [(control f12)] 'describe-key)
+(global-set-key (kbd "M-{") 'previous-buffer)
+(global-set-key (kbd "M-}") 'next-buffer)
+(global-set-key (kbd "M-k") 'kill-this-buffer)
 (global-set-key (kbd "M-<up>") 'windmove-up)
 (global-set-key (kbd "M-<right>") 'windmove-right)
 (global-set-key (kbd "M-<down>") 'windmove-down)
@@ -69,26 +75,35 @@
 (global-set-key (kbd "C-c ~") 'flycheck-buffer)
 (global-set-key (kbd "C-c /") 'comment-region)
 (global-set-key (kbd "C-c ?") 'uncomment-region)
+(global-set-key (kbd "C-c w") 'whitespace-cleanup)
 
+;multiple-cursors
+(global-set-key (kbd "C-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "M-.") 'mc/mark-next-like-this)
+(global-set-key (kbd "M-,") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+(show-paren-mode 1)
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
-(setq global-linum-mode t)
+(global-linum-mode t)
+(setq linum-format "%4d\u2502 ")
+(global-auto-revert-mode t)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (defvar flycheck-check-syntax-automatically)
 (setq flycheck-check-syntax-automatically '(save))
+'flycheck '(setq flycheck-checkers (delq 'html-tidy flycheck-checkers))
 
 ;extra mode configs
-(eval-after-load "color-theme"
-  '(progn
-     (color-theme-initialize)
-     (color-theme-dark-laptop)))
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
+(put 'downcase-region 'disabled nil)
+(provide 'init)
+;;; init.el ends here
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(put 'downcase-region 'disabled nil)
-(provide 'init)
-;;; init.el ends here

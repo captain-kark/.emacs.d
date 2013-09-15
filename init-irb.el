@@ -1,3 +1,4 @@
+;test
 ; Settings for running a temporary editor in irb, a la the `interactive_editor` gem.
 (make-directory "~/.emacs.d/autosaves/" t)(when (>= emacs-major-version 24)
   (require 'package)
