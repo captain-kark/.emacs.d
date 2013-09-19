@@ -15,6 +15,8 @@
 (add-to-list 'load-path
 	     "~/.emacs.d/elpa/auto-complete-20130503.2013")
 
+(load-theme 'zenburn t)
+
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
