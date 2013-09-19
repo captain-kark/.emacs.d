@@ -29,6 +29,8 @@
 (require 'ido)
 (ido-mode t)
 
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
