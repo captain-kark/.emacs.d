@@ -83,15 +83,14 @@
 
 ;multiple-cursors
 (global-set-key (kbd "C-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "M-.") 'mc/mark-next-like-this)
-(global-set-key (kbd "M-,") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (show-paren-mode 1)
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
 (global-linum-mode t)
-(setq linum-format "%4d\u2502 ")
 (global-auto-revert-mode t)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (defvar flycheck-check-syntax-automatically)
@@ -99,10 +98,11 @@
 'flycheck '(setq flycheck-checkers (delq 'html-tidy flycheck-checkers))
 
 ;extra mode configs
+(add-to-list 'default-frame-alist '(height . 80))
+(add-to-list 'default-frame-alist '(width . 110))
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-(put 'downcase-region 'disabled nil)
 (provide 'init)
 ;;; init.el ends here
 (custom-set-faces
