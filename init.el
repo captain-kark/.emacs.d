@@ -106,6 +106,7 @@
 'flycheck '(setq flycheck-checkers (delq 'html-tidy flycheck-checkers))
 
 ;extra mode configs
+(setq-default indent-tabs-mode nil)
 (add-to-list 'default-frame-alist '(height . 80))
 (add-to-list 'default-frame-alist '(width . 110))
 (put 'downcase-region 'disabled nil)
