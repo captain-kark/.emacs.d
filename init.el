@@ -64,9 +64,15 @@
     (interactive)
       (load-file "~/.emacs.d/init.el"))
 
+(defun show-file-name ()
+  "Show the full path file name in the minibuffer."
+  (interactive)
+  (message (buffer-file-name)))
+
 ;custom keys
 ;;;;;;;;;;;;
 ;global
+(global-set-key [(control f1)] 'show-file-name)
 (global-set-key [(control f9)] 'reload-init)
 (global-set-key [(control f12)] 'describe-key)
 (global-set-key (kbd "M-{") 'previous-buffer)
