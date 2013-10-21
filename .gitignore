@@ -5,5 +5,5 @@
 ac-comphist.dat
 autosaves/*
 backups/*
-eshell/*
-flycheck-init.el
+session.*
+.mc-lists.el
