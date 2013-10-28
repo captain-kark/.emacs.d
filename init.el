@@ -27,6 +27,10 @@
 (require 'auto-complete)
 (global-auto-complete-mode t)
 
+(require 'column-marker)
+(add-hook 'python-mode-hook (lambda () (interactive) (column-marker-2 80)))
+(add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-3 100)))
+
 (column-number-mode t)
 
 (require 'ido)
