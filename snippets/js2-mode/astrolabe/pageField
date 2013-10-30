@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-#name : Page Field
-# --
-${fieldName}: { 
-    get: function() { return this.findElement${}(this.by.${css}(${''})); } 
-}$0
