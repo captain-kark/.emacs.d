@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : Page Exception
+# --
+${ExceptionName}: {
+    get: function() { return new exceptions.Exception('${}'); }
+}$0
