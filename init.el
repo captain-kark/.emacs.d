@@ -44,8 +44,17 @@
 
 (require 'multiple-cursors)
 
+(add-hook 'css-mode-hook 'rainbow-mode)
+(add-hook 'sass-mode-hook 'rainbow-mode)
+
 (require 'rvm)
 (rvm-use-default)
+
+
+(autoload 'sass-mode "sass-mode")
+    (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
+    (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
+
 
 (require 'yasnippet)
 (setq yas-snippet-dirs
