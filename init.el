@@ -133,7 +133,7 @@
 
 ;extra mode configs
 (setq-default indent-tabs-mode nil)
-(add-to-list 'default-frame-alist '(height . 67))
+(add-to-list 'default-frame-alist '(height . 65))
 (add-to-list 'default-frame-alist '(width . 113))
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
