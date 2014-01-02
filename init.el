@@ -38,6 +38,9 @@
 
 (column-number-mode t)
 
+(add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
 (require 'ido)
 (ido-mode t)
 
