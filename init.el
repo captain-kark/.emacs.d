@@ -30,6 +30,7 @@
 (ido-mode t)
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-hook 'json-mode-hook (lambda () (interactive) (setq tab-width 2)))
 
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
@@ -98,6 +99,7 @@
 (show-paren-mode 1)
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
+(setq-default truncate-lines 1)
 (global-linum-mode t)
 (global-auto-revert-mode t)
 (add-hook 'after-init-hook #'global-flycheck-mode)
