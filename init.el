@@ -91,14 +91,19 @@
 
 ;Custom commands
 (defun reload-init ()
-"Reload init.el without restarting."
-    (interactive)
-      (load-file "~/.emacs.d/init.el"))
+  "Reload init.el without restarting."
+  (interactive)
+  (load-file "~/.emacs.d/init.el"))
 
 (defun show-file-name ()
   "Show the full path file name in the minibuffer."
   (interactive)
   (message (buffer-file-name)))
+
+(defun flush-blank-lines ()
+  "Remove any blank lines from the entire buffer."
+  (interactive)
+  (flush-lines "^$"))
 
 ;custom keys
 ;;;;;;;;;;;;
@@ -120,6 +125,9 @@
 (global-set-key (kbd "C-c /") 'comment-region)
 (global-set-key (kbd "C-c ?") 'uncomment-region)
 (global-set-key (kbd "C-c w") 'whitespace-cleanup)
+(global-set-key (kbd "C-c S") 'sort-lines)
+(global-set-key (kbd "C-c R") 'reverse-region)
+(global-set-key (kbd "C-c W") 'flush-blank-lines)
 ;multiple-cursors
 (global-set-key (kbd "C-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
