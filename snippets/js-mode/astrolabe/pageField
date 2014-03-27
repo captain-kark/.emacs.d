@@ -2,5 +2,5 @@
 #name : Page Field
 # --
 ${fieldName}: {
-    get: function() { return this.findElement${}(this.by.${css}('${}')); }
+    get: function() { return this.find.${}by.${css}('${}'); }
 }$0
