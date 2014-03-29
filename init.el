@@ -23,6 +23,7 @@
 
 (require 'auto-complete)
 (global-auto-complete-mode t)
+(ac-set-trigger-key "TAB")
 
 (column-number-mode t)
 
