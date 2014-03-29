@@ -26,6 +26,7 @@
 
 (require 'auto-complete)
 (global-auto-complete-mode t)
+(ac-set-trigger-key "TAB")
 
 (require 'cider)
 (add-hook 'clojure-mode-hook 'cider-mode)
