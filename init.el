@@ -34,7 +34,7 @@
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
 (require 'column-marker)
-(add-hook 'python-mode-hook (lambda () (interactive) (column-marker-2 80)))
+(add-hook 'python-mode-hook (lambda () (interactive) (column-marker-2 100)))
 (add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-3 100)))
 
 (column-number-mode t)
