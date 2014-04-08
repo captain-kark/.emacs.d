@@ -69,8 +69,7 @@
 
 (require 'yasnippet)
 (setq yas-snippet-dirs
-      '("~/.emacs.d/snippets/"
-	"~/.emacs.d/elpa/yasnippet-20130902.1201/snippets/"))
+      '("~/.emacs.d/snippets/"))
 (yas-global-mode t)
 
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
