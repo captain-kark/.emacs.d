@@ -2,5 +2,5 @@
 #name : Page Exception
 # --
 ${ExceptionName}: {
-    get: function() { return this.exception('${}'); }
+    get: function () { return this.exception('${}'); }
 }$0

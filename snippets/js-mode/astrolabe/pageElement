@@ -2,5 +2,5 @@
 #name : Page Element
 # --
 ${fieldName}: {
-    get: function() { return \$${}('${}'); }
+    get: function () { return \$${}('${}'); }
 }$0
