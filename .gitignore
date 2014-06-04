@@ -7,3 +7,4 @@ autosaves/*
 backups/*
 session.*
 .mc-lists.el
+tramp
