@@ -46,6 +46,12 @@
 (require 'rvm)
 (rvm-use-default)
 
+(autoload 'sass-mode "sass-mode")
+    (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
+    (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
+
+(setq tramp-default-method "ssh")
+
 (require 'yasnippet)
 (setq yas-snippet-dirs
       '("~/.emacs.d/snippets/"))
@@ -104,12 +110,14 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-(show-paren-mode 1)
+(global-auto-revert-mode t)
+(global-linum-mode t)
+(setq default-directory "~")
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
 (setq-default truncate-lines 1)
-(global-linum-mode t)
-(global-auto-revert-mode t)
+(show-paren-mode 1)
+
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (defvar flycheck-check-syntax-automatically)
 (setq flycheck-check-syntax-automatically '(save))
