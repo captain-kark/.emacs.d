@@ -53,6 +53,10 @@
     (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
     (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+(setq-default truncate-lines 1)
+(add-hook 'markdown-mode-hook 'toggle-truncate-lines)
+(add-hook 'markdown-mode-hook 'adaptive-wrap-prefix-mode)
+
 (require 'multiple-cursors)
 
 (add-hook 'css-mode-hook 'rainbow-mode)
@@ -140,7 +144,6 @@
 (setq default-directory "~")
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
-(setq-default truncate-lines 1)
 (show-paren-mode 1)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
