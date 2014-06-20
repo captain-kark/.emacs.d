@@ -33,6 +33,8 @@
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
+(add-hook 'coffee-mode-hook (lambda () (interactive) (setq tab-width 2)))
+
 (require 'column-marker)
 (add-hook 'python-mode-hook (lambda () (interactive) (column-marker-2 100)))
 (add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-3 100)))
