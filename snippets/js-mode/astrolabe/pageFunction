@@ -3,6 +3,6 @@
 # --
 ${pageFunction}: {
     value: function (${}) {
-        $0
+        ${}
     }
-}
+}$0
