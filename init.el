@@ -95,7 +95,7 @@
  '(vc-annotate-color-map (quote ((20 . "#BC8383") (40 . "#CC9393") (60 . "#DFAF8F") (80 . "#D0BF8F") (100 . "#E0CF9F") (120 . "#F0DFAF") (140 . "#5F7F5F") (160 . "#7F9F7F") (180 . "#8FB28F") (200 . "#9FC59F") (220 . "#AFD8AF") (240 . "#BFEBBF") (260 . "#93E0E3") (280 . "#6CA0A3") (300 . "#7CB8BB") (320 . "#8CD0D3") (340 . "#94BFF3") (360 . "#DC8CC3"))))
  '(vc-annotate-very-old-color "#DC8CC3"))
 
-;Custom commands
+;Custom functions
 (defun reload-init ()
   "Reload init.el without restarting."
   (interactive)
@@ -111,6 +111,22 @@
   (interactive)
   (flush-lines "^$"))
 
+(defun halve-other-window-height ()
+  "Expand current window to use half of the other window's lines."
+  (interactive)
+  (enlarge-window (/ (window-height (next-window)) 2)))
+
+(defun halve-this-window-height ()
+  "Shrink current window to use half of the other window's lines."
+  (interactive)
+  (shrink-window (/ (window-height (next-window)) 2)))
+
+(defun unix-newline ()
+  "Convert all Windows newlines to Unix styles line endings."
+  (set-buffer-file-coding-system 'utf-8))
+(add-hook 'before-save-hook 'unix-newline)
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
 ;custom keys
 ;;;;;;;;;;;;
 ;global
@@ -125,6 +141,10 @@
 (global-set-key (kbd "M-<down>") 'forward-paragraph)
 (global-set-key (kbd "M-s-<down>") 'windmove-down)
 (global-set-key (kbd "M-s-<left>") 'windmove-left)
+(global-set-key (kbd "<s-return>") 'newline-and-indent)
+(global-set-key (kbd "C-x M-s-<down>") 'halve-this-window-height)
+(global-set-key (kbd "C-x M-s-<up>") 'halve-other-window-height)
+(global-set-key (kbd "C-c b") 'rename-buffer)
 (global-set-key (kbd "C-c n") 'flycheck-next-error)
 (global-set-key (kbd "C-c p") 'flycheck-previous-error)
 (global-set-key (kbd "C-c ~") 'flycheck-buffer)
