@@ -7,7 +7,7 @@
   (require 'package)
   (package-initialize)
   (add-to-list 'package-archives
-	       '("melpa" . "http://melpa.milkbox.net/packages/") t))
+               '("melpa" . "http://melpa.milkbox.net/packages/") t))
 
 (make-directory "~/.emacs.d/autosaves/" t)
 (make-directory "~/.emacs.d/backups/" t)
@@ -66,7 +66,6 @@
 
 (require 'rvm)
 (rvm-use-default)
-
 
 (autoload 'sass-mode "sass-mode")
     (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
