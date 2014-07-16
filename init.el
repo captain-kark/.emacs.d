@@ -127,11 +127,17 @@
 (add-hook 'before-save-hook 'unix-newline)
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
+(defun restart-shell ()
+  "Restart (or start a new) shell in current buffer."
+  (interactive)
+  (shell (current-buffer)))
+
 ;custom keys
 ;;;;;;;;;;;;
 ;global
-(global-set-key [(control f11)] 'show-file-name)
+(global-set-key [(control f5)] 'restart-shell)
 (global-set-key [(control f9)] 'reload-init)
+(global-set-key [(control f11)] 'show-file-name)
 (global-set-key [(control f12)] 'describe-key)
 (global-set-key (kbd "s-{") 'previous-buffer)
 (global-set-key (kbd "s-}") 'next-buffer)
