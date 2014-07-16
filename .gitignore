@@ -9,5 +9,4 @@ backups/*
 session.*
 .mc-lists.el
 tramp
-console_log.notes
-menu_log.notes
+*.notes
