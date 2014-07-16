@@ -132,6 +132,11 @@
   (interactive)
   (shell (current-buffer)))
 
+(defun new-browser-tab ()
+  "Open a new browser tab in the default browser."
+  (interactive)
+  (shell-command "open http://google.com"))
+
 ;custom keys
 ;;;;;;;;;;;;
 ;global
@@ -141,6 +146,7 @@
 (global-set-key [(control f12)] 'describe-key)
 (global-set-key (kbd "s-{") 'previous-buffer)
 (global-set-key (kbd "s-}") 'next-buffer)
+(global-set-key (kbd "s-t") 'new-browser-tab)
 (global-set-key (kbd "M-<up>") 'backward-paragraph)
 (global-set-key (kbd "M-s-<up>") 'windmove-up)
 (global-set-key (kbd "M-s-<right>") 'windmove-right)
