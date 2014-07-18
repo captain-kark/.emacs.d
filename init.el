@@ -72,6 +72,8 @@
     (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
 
 (setq tramp-default-method "ssh")
+(eval-after-load 'tramp
+  '(vagrant-tramp-enable))
 
 (require 'yasnippet)
 (setq yas-snippet-dirs
