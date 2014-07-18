@@ -71,6 +71,8 @@
     (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
     (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
 
+(global-smartscan-mode 1)
+
 (setq tramp-default-method "ssh")
 (eval-after-load 'tramp
   '(vagrant-tramp-enable))
