@@ -170,6 +170,8 @@
 (global-set-key (kbd "C-c S") 'sort-lines)
 (global-set-key (kbd "C-c R") 'reverse-region)
 (global-set-key (kbd "C-c W") 'flush-blank-lines)
+(global-set-key (kbd "C-z") 'forward-whitespace)
+(global-set-key (kbd "C-S-z") (lambda () (interactive) (forward-whitespace -1)))
 ;multiple-cursors
 (global-set-key (kbd "C-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
