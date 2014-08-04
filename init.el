@@ -194,6 +194,7 @@
 (setq-default indent-tabs-mode nil)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
+(put 'erase-buffer 'disabled nil)
 
 ; Load el5r, which loads Xiki
 (add-to-list 'load-path "/Users/andr6283/.rvm/gems/ruby-1.9.3-p448/gems/trogdoro-el4r-1.0.10/data/emacs/site-lisp/")
