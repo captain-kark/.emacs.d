@@ -204,6 +204,7 @@
 ;; Compensate for xiki's various over-rides
 (global-set-key (kbd "C-e") 'end-of-line)
 (global-set-key (kbd "C-a") 'move-beginning-of-line)
+(global-set-key (kbd "C-d") 'delete-forward-char)
 (setq-default show-trailing-whitespace (not show-trailing-whitespace))
 
 (server-start)
