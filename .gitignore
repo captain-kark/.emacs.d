@@ -10,3 +10,4 @@ session.*
 .mc-lists.el
 tramp
 *.notes
+bookmarks
