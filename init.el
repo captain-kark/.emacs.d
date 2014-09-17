@@ -196,18 +196,6 @@
 (put 'upcase-region 'disabled nil)
 (put 'erase-buffer 'disabled nil)
 
-; Load el5r, which loads Xiki
-(add-to-list 'load-path "/Users/andr6283/.rvm/gems/ruby-1.9.3-p448/gems/trogdoro-el4r-1.0.10/data/emacs/site-lisp/")
-(require 'el4r)
-(el4r-boot)
-(el4r-troubleshooting-keys)
-
-;; Compensate for xiki's various over-rides
-(global-set-key (kbd "C-e") 'end-of-line)
-(global-set-key (kbd "C-a") 'move-beginning-of-line)
-(global-set-key (kbd "C-d") 'delete-forward-char)
-(setq-default show-trailing-whitespace (not show-trailing-whitespace))
-
 (server-start)
 
 (setq confirm-kill-emacs 'y-or-n-p)
