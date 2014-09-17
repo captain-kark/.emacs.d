@@ -141,6 +141,19 @@
   (interactive)
   (shell-command "open http://google.com"))
 
+(defun retabify-buffer ()
+  "Apply a reindent operation on the entire buffer."
+  (interactive)
+  (indent-region (point-min) (point-max) nil)
+  (untabify (point-min) (point-max)))
+
+(defun retabify-buffer-to (tab-size)
+  "Apply a reindent operation on the entire buffer with new TAB-SIZE."
+  (interactive "nNew buffer tab size: ")
+  (setq tab-width tab-size)
+  (setq js-indent-level tab-size)
+  (retabify-buffer))
+
 ;custom keys
 ;;;;;;;;;;;;
 ;global
@@ -167,6 +180,8 @@
 (global-set-key (kbd "C-c /") 'comment-region)
 (global-set-key (kbd "C-c ?") 'uncomment-region)
 (global-set-key (kbd "C-c w") 'whitespace-cleanup)
+(global-set-key (kbd "C-c <tab>") 'retabify-buffer)
+(global-set-key (kbd "C-c <backtab>") 'retabify-buffer-to)
 (global-set-key (kbd "C-c S") 'sort-lines)
 (global-set-key (kbd "C-c R") 'reverse-region)
 (global-set-key (kbd "C-c W") 'flush-blank-lines)
