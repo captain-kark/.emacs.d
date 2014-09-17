@@ -171,6 +171,7 @@
 (global-set-key (kbd "M-s-<down>") 'windmove-down)
 (global-set-key (kbd "M-s-<left>") 'windmove-left)
 (global-set-key (kbd "<s-return>") 'newline-and-indent)
+(global-set-key (kbd "C-x a") 'erase-buffer)
 (global-set-key (kbd "C-x M-s-<down>") 'halve-this-window-height)
 (global-set-key (kbd "C-x M-s-<up>") 'halve-other-window-height)
 (global-set-key (kbd "C-c b") 'rename-buffer)
