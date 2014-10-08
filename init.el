@@ -28,6 +28,9 @@
 (global-auto-complete-mode t)
 (ac-set-trigger-key "TAB")
 
+(require 'bash-completion)
+(bash-completion-setup)
+
 (require 'cider)
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
