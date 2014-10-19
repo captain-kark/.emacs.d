@@ -132,6 +132,8 @@
 
 (server-start)
 
+(setq confirm-kill-emacs 'y-or-n-p)
+
 (provide 'init)
 ;;; init.el ends here
 (custom-set-faces
