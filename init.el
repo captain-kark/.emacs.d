@@ -91,6 +91,8 @@
 (global-set-key (kbd "M-{") 'previous-buffer)
 (global-set-key (kbd "M-}") 'next-buffer)
 (global-set-key (kbd "M-k") 'kill-this-buffer)
+(global-set-key (kbd "M-u") 'revert-buffer)
+(global-set-key (kbd "M-l") 'goto-line)
 (global-set-key (kbd "M-<up>") 'windmove-up)
 (global-set-key (kbd "M-<right>") 'windmove-right)
 (global-set-key (kbd "M-<down>") 'windmove-down)
@@ -117,6 +119,7 @@
 (setq ring-bell-function 'ignore)
 (setq-default truncate-lines 1)
 (show-paren-mode 1)
+(set-face-attribute 'default nil :height 120)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (defvar flycheck-check-syntax-automatically)
