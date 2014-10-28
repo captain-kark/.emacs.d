@@ -7,13 +7,13 @@
   (require 'package)
   (package-initialize)
   (add-to-list 'package-archives
-	       '("melpa" . "http://melpa.milkbox.net/packages/") t))
+               '("melpa" . "http://melpa.milkbox.net/packages/") t))
 
 (make-directory "~/.emacs.d/autosaves/" t)
 (make-directory "~/.emacs.d/backups/" t)
 
 (add-to-list 'load-path
-	     "~/.emacs.d/elpa/auto-complete-20130503.2013")
+             "~/.emacs.d/elpa/auto-complete-20130503.2013")
 
 (load-theme 'zenburn t)
 
@@ -82,17 +82,50 @@
   (interactive)
   (flush-lines "^$"))
 
+(defun halve-other-window-height ()
+  "Expand current window to use half of the other window's lines."
+  (interactive)
+  (enlarge-window (/ (window-height (next-window)) 2)))
+
+(defun halve-this-window-height ()
+  "Shrink current window to use half of the other window's lines."
+  (interactive)
+  (shrink-window (/ (window-height (next-window)) 2)))
+
+(defun unix-newline ()
+  "Convert all Windows newlines to Unix styles line endings."
+  (set-buffer-file-coding-system 'utf-8))
+(add-hook 'before-save-hook 'unix-newline)
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
+(defun restart-shell ()
+  "Restart (or start a new) shell in current buffer."
+  (interactive)
+  (shell (current-buffer)))
+
+(defun new-browser-tab ()
+  "Open a new browser tab in the default browser."
+  (interactive)
+  (shell-command "xdg-open http://google.com"))
+
 ;custom keys
 ;;;;;;;;;;;;
 ;global
 (global-set-key [(control f1)] 'show-file-name)
+(global-set-key [(control f5)] 'restart-shell)
 (global-set-key [(control f9)] 'reload-init)
+(global-set-key [(control f11)] 'show-file-name)
 (global-set-key [(control f12)] 'describe-key)
 (global-set-key (kbd "M-{") 'previous-buffer)
 (global-set-key (kbd "M-}") 'next-buffer)
+(global-set-key (kbd "s-t") 'new-browser-tab)
 (global-set-key (kbd "M-k") 'kill-this-buffer)
 (global-set-key (kbd "M-u") 'revert-buffer)
+(global-set-key (kbd "C-x a") 'erase-buffer)
 (global-set-key (kbd "M-l") 'goto-line)
+(global-set-key (kbd "C-x M-s-<down>") 'halve-this-window-height)
+(global-set-key (kbd "C-x M-s-<up>") 'halve-other-window-height)
+(global-set-key (kbd "C-c b") 'rename-buffer)
 (global-set-key (kbd "M-<up>") 'windmove-up)
 (global-set-key (kbd "M-<right>") 'windmove-right)
 (global-set-key (kbd "M-<down>") 'windmove-down)
@@ -106,6 +139,8 @@
 (global-set-key (kbd "C-c S") 'sort-lines)
 (global-set-key (kbd "C-c R") 'reverse-region)
 (global-set-key (kbd "C-c W") 'flush-blank-lines)
+(global-set-key (kbd "C-z") 'forward-whitespace)
+(global-set-key (kbd "C-S-z") (lambda () (interactive) (forward-whitespace -1)))
 ;multiple-cursors
 (global-set-key (kbd "C-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
