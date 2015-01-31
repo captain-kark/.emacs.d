@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+#name : jsdoc:returns
+# --
+@returns {${ObjectType}} ${Returns description.}$0
