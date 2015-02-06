@@ -29,6 +29,7 @@
 
 (require 'ido)
 (ido-mode t)
+(setq ido-enable-flex-matching t)
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'json-mode-hook (lambda () (interactive) (setq tab-width 2)))
