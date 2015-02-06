@@ -49,6 +49,7 @@
 
 (require 'ido)
 (ido-mode t)
+(setq ido-enable-flex-matching t)
 
 (add-hook 'json-mode-hook (lambda () (interactive) (setq tab-width 2)))
 
