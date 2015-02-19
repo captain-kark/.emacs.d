@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : jsdoc:example
+# --
+@example
+\`\`\`${lang}
+${}
+\`\`\`$0
