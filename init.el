@@ -77,6 +77,7 @@
 
 (global-smartscan-mode 1)
 
+(set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 (setq tramp-default-method "ssh")
 (eval-after-load 'tramp
   '(vagrant-tramp-enable))
