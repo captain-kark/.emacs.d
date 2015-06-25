@@ -1,10 +1,10 @@
 ;;; vagrant-tramp-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-
+(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads (vagrant-tramp-enable vagrant-tramp-term vagrant-tramp-ssh)
-;;;;;;  "vagrant-tramp" "vagrant-tramp.el" (21449 19774 0 0))
+;;;### (autoloads nil "vagrant-tramp" "vagrant-tramp.el" (21900 9889
+;;;;;;  0 0))
 ;;; Generated autoloads from vagrant-tramp.el
 
 (defconst vagrant-tramp-method "vagrant" "\
@@ -27,16 +27,14 @@ Add `vagrant-tramp-method' to `tramp-methods'.
 
 ;;;***
 
-;;;### (autoloads nil nil ("vagrant-tramp-pkg.el") (21449 19774 557982
+;;;### (autoloads nil nil ("vagrant-tramp-pkg.el") (21900 9889 689645
 ;;;;;;  0))
 
 ;;;***
 
-(provide 'vagrant-tramp-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
 ;; End:
 ;;; vagrant-tramp-autoloads.el ends here

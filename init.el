@@ -3,53 +3,36 @@
 ;;; Commentary:
 
 ;;; Code:
-(make-directory "~/.emacs.d/autosaves/" t)(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives
-               '("melpa" . "http://melpa.milkbox.net/packages/") t))
-
-(make-directory "~/.emacs.d/autosaves/" t)
-(make-directory "~/.emacs.d/backups/" t)
-
-(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-20130724.1750/")
-(add-to-list 'load-path	"~/.emacs.d/elpa/markdown-mode-20130726.2142/")
-
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
-
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-(load-theme 'zenburn t)
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list
+   'package-archives
+   '("melpa" . "http://melpa.org/packages/")
+   t)
+  (package-initialize))
+
+(make-directory "~/.emacs.d/autosaves/" t)
+(make-directory "~/.emacs.d/backups/" t)
+
+(load-theme 'base16-eighties-dark t)
 
 (require 'auto-complete)
 (global-auto-complete-mode t)
 (ac-set-trigger-key "TAB")
 
-(require 'bash-completion)
-(bash-completion-setup)
-
-(require 'cider)
-(add-hook 'clojure-mode-hook 'cider-mode)
-(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 (add-hook 'coffee-mode-hook (lambda () (interactive) (setq tab-width 2)))
-
-(require 'column-marker)
-(add-hook 'python-mode-hook (lambda () (interactive) (column-marker-2 100)))
-(add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-3 100)))
 
 (column-number-mode t)
 
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
-
-(require 'ido)
-(ido-mode t)
-(setq ido-enable-flex-matching t)
 
 (add-hook 'json-mode-hook (lambda () (interactive) (setq tab-width 2)))
 
@@ -87,22 +70,14 @@
       '("~/.emacs.d/snippets/"))
 (yas-global-mode t)
 
-;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
- '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosaves/\\1" t))))
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
- '(column-number-mode t)
- '(custom-safe-themes (quote ("f3d2144fed1adb27794a45e61166e98820ab0bbf3cc7ea708e4bf4b57447ee27" "3ad55e40af9a652de541140ff50d043b7a8c8a3e73e2a649eb808ba077e75792" default)))
- '(fci-rule-color "#383838")
- '(safe-local-variable-values (quote ((lexical-binding . t))))
- '(vc-annotate-background "#2B2B2B")
- '(vc-annotate-color-map (quote ((20 . "#BC8383") (40 . "#CC9393") (60 . "#DFAF8F") (80 . "#D0BF8F") (100 . "#E0CF9F") (120 . "#F0DFAF") (140 . "#5F7F5F") (160 . "#7F9F7F") (180 . "#8FB28F") (200 . "#9FC59F") (220 . "#AFD8AF") (240 . "#BFEBBF") (260 . "#93E0E3") (280 . "#6CA0A3") (300 . "#7CB8BB") (320 . "#8CD0D3") (340 . "#94BFF3") (360 . "#DC8CC3"))))
- '(vc-annotate-very-old-color "#DC8CC3"))
+(helm-mode 1)
+(helm-autoresize-mode 1)
+(helm-push-mark-mode 1)
+(define-key global-map [remap list-buffers] 'helm-buffers-list)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "M-D") 'helm-buffer-run-kill-buffers)
 
 ;Custom functions
 (defun reload-init ()
@@ -204,6 +179,7 @@
 (setq default-directory "~")
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
+(setq ispell-program-name "/usr/local/bin/ispell")
 (show-paren-mode 1)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -223,9 +199,3 @@
 
 (provide 'init)
 ;;; init.el ends here
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
