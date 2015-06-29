@@ -31,6 +31,8 @@
 
 (column-number-mode t)
 
+(electric-indent-mode 0)
+
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
