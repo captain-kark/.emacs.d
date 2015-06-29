@@ -41,10 +41,16 @@
     (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
     (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
     (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-hook 'markdown-mode-hook
+      (lambda ()
+        (local-unset-key (kbd "M-<up>"))
+        (local-unset-key (kbd "M-<down>"))
+        (local-unset-key (kbd "M-<left>"))
+        (local-unset-key (kbd "M-<right>"))
+        (toggle-truncate-lines)
+        (adaptive-wrap-prefix-mode)))
 
 (setq-default truncate-lines 1)
-(add-hook 'markdown-mode-hook 'toggle-truncate-lines)
-(add-hook 'markdown-mode-hook 'adaptive-wrap-prefix-mode)
 
 (require 'multiple-cursors)
 
