@@ -1,4 +1,4 @@
-;;; package -- Summary
+;; package -- Summary
 
 ;;; Commentary:
 
@@ -15,7 +15,7 @@
 (add-to-list 'load-path
              "~/.emacs.d/elpa/auto-complete-20130503.2013")
 
-(load-theme 'zenburn t)
+(load-theme 'base16-eighties-dark t)
 
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -27,12 +27,17 @@
 
 (column-number-mode t)
 
-(require 'ido)
-(ido-mode t)
-(setq ido-enable-flex-matching t)
-
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'json-mode-hook (lambda () (interactive) (setq tab-width 2)))
+
+(helm-mode 1)
+(helm-autoresize-mode 1)
+(helm-push-mark-mode 1)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "M-D") 'helm-buffer-run-kill-buffers)
 
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
@@ -127,10 +132,10 @@
 (global-set-key (kbd "C-x M-s-<down>") 'halve-this-window-height)
 (global-set-key (kbd "C-x M-s-<up>") 'halve-other-window-height)
 (global-set-key (kbd "C-c b") 'rename-buffer)
-(global-set-key (kbd "M-<up>") 'windmove-up)
-(global-set-key (kbd "M-<right>") 'windmove-right)
-(global-set-key (kbd "M-<down>") 'windmove-down)
-(global-set-key (kbd "M-<left>") 'windmove-left)
+(global-set-key (kbd "M-s-<up>") 'windmove-up)
+(global-set-key (kbd "M-s-<right>") 'windmove-right)
+(global-set-key (kbd "M-s-<down>") 'windmove-down)
+(global-set-key (kbd "M-s-<left>") 'windmove-left)
 (global-set-key (kbd "C-c n") 'flycheck-next-error)
 (global-set-key (kbd "C-c p") 'flycheck-previous-error)
 (global-set-key (kbd "C-c ~") 'flycheck-buffer)
