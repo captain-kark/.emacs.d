@@ -163,6 +163,7 @@
 (global-set-key (kbd "C-x M-s-<down>") 'halve-this-window-height)
 (global-set-key (kbd "C-x M-s-<up>") 'halve-other-window-height)
 (global-set-key (kbd "C-x n") 'rename-buffer)
+(global-set-key (kbd "C-x C-z") nil) ;; stop annoying suspend frame behavior
 (global-set-key (kbd "C-c n") 'flycheck-next-error)
 (global-set-key (kbd "C-c p") 'flycheck-previous-error)
 (global-set-key (kbd "C-c ~") 'flycheck-buffer)
