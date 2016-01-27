@@ -2,6 +2,4 @@
 #name : jsdoc:example
 # --
 @example
-\`\`\`${lang}
-${}
-\`\`\`$0
+* ${}

@@ -1,4 +1,5 @@
 # -*- mode: snippet -*-
 #name : jsdoc:param
 # --
-@param {${ObjectType}} ${objectInstance} - ${Parameter description.}$0
+@param {${ObjectType}} ${objectInstance} - ${Parameter description.}
+* $0
