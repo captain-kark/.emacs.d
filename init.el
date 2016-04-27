@@ -30,7 +30,7 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
-(load-theme 'base16-eighties-dark t)
+(load-theme 'base16-atelierforest-dark t)
 
 (require 'auto-complete)
 (global-auto-complete-mode t)
