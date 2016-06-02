@@ -24,7 +24,7 @@
       (base0E "#6666ea")
       (base0F "#c33ff3"))
 
-  (custom-theme-set-faces 
+  (custom-theme-set-faces
    'base16-atelierforest-dark
 
    ;; Built-in stuff (Emacs 23)
@@ -39,7 +39,7 @@
    `(link-visited ((t (:foreground ,base0E))))
    `(minibuffer-prompt ((t (:foreground ,base0D))))
    `(mode-line ((t (:background ,base02 :foreground ,base04 :box nil))))
-   `(mode-line-buffer-id ((t (:foreground ,base0E :background nil))))
+   `(mode-line-buffer-id ((t (:foreground ,base0B :background nil))))
    `(mode-line-emphasis ((t (:foreground ,base06 :slant italic))))
    `(mode-line-highlight ((t (:foreground ,base0E :box nil :weight bold))))
    `(mode-line-inactive ((t (:background ,base01 :foreground ,base03 :box nil))))
@@ -439,7 +439,7 @@
    `(custom-variable-tag ((t (:foreground ,base0D))))
    `(custom-group-tag ((t (:foreground ,base0D))))
    `(custom-state ((t (:foreground ,base0B)))))
-   
+
 
   (custom-theme-set-variables
    'base16-atelierforest-dark
