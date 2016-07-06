@@ -15,7 +15,7 @@
 (add-to-list 'load-path
              "~/.emacs.d/elpa/auto-complete-20130503.2013")
 
-(load-theme 'base16-eighties-dark t)
+(load-theme 'base16-atelierforest-dark t)
 
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
