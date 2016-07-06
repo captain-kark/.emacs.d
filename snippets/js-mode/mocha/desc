@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 #name : describe
 # --
-describe('${}', function(${}) {
+describe('${}', function (${}) {
     ${}
 });
