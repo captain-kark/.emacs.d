@@ -27,7 +27,7 @@
 
 (column-number-mode t)
 
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
 (add-hook 'json-mode-hook (lambda () (interactive) (setq tab-width 2)))
 
 (helm-mode 1)
