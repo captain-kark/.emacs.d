@@ -12,8 +12,7 @@
 (make-directory "~/.emacs.d/autosaves/" t)
 (make-directory "~/.emacs.d/backups/" t)
 
-(add-to-list 'load-path
-             "~/.emacs.d/elpa/auto-complete-20130503.2013")
+(add-hook 'after-init-hook 'global-company-mode)
 
 (load-theme 'base16-atelierforest-dark t)
 
@@ -65,9 +64,11 @@
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
-)
+  (company-mode +1))
 
+(setq company-tooltip-align-annotations t)
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
+(setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
 
 (require 'yasnippet)
 (setq yas-snippet-dirs
