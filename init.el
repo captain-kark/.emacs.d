@@ -26,6 +26,7 @@
 (ac-set-trigger-key "TAB")
 
 (column-number-mode t)
+(require 'flycheck)
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js-mode))
 (add-hook 'json-mode-hook (lambda () (interactive) (setq tab-width 2)))
@@ -57,6 +58,16 @@
     (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
 
 (setq tramp-default-method "ssh")
+
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+)
+
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 (require 'yasnippet)
 (setq yas-snippet-dirs
