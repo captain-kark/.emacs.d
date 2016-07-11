@@ -20,10 +20,6 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-(require 'auto-complete)
-(global-auto-complete-mode t)
-(ac-set-trigger-key "TAB")
-
 (column-number-mode t)
 (require 'flycheck)
 
@@ -134,6 +130,7 @@
 (global-set-key [(control f9)] 'reload-init)
 (global-set-key [(control f11)] 'show-file-name)
 (global-set-key [(control f12)] 'describe-key)
+(global-set-key [(backtab)] 'company-complete)
 (global-set-key (kbd "M-{") 'previous-buffer)
 (global-set-key (kbd "M-}") 'next-buffer)
 (global-set-key (kbd "s-t") 'new-browser-tab)
