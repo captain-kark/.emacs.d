@@ -6,6 +6,7 @@
 ac-comphist.dat
 autosaves/*
 backups/*
+games/*
 session.*
 .mc-lists.el
 tramp
