@@ -30,11 +30,13 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
+;; this is just to start tsserver, not to execute anything relevant to project code
+(setenv "PATH" (concat (getenv "PATH") ":~/.nvm/versions/node/v5.11.1/bin"))
+    (setq exec-path (append exec-path '("~/.nvm/versions/node/v5.11.1/bin")))
+
 (load-theme 'base16-atelierforest-dark t)
 
-(require 'auto-complete)
-(global-auto-complete-mode t)
-(ac-set-trigger-key "TAB")
+(add-hook 'after-init-hook 'global-company-mode)
 
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
@@ -42,6 +44,7 @@
 (add-hook 'coffee-mode-hook (lambda () (interactive) (setq tab-width 2)))
 
 (column-number-mode t)
+(require 'flycheck)
 
 (electric-indent-mode 0)
 
@@ -71,9 +74,6 @@
 (add-hook 'css-mode-hook 'rainbow-mode)
 (add-hook 'sass-mode-hook 'rainbow-mode)
 
-(require 'rvm)
-(rvm-use-default)
-
 (autoload 'sass-mode "sass-mode")
     (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
     (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
@@ -82,8 +82,6 @@
 
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 (setq tramp-default-method "ssh")
-(eval-after-load 'tramp
-  '(vagrant-tramp-enable))
 
 (require 'yasnippet)
 (setq yas-snippet-dirs
@@ -98,6 +96,18 @@
 (global-set-key (kbd "C-x C-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-D") 'helm-buffer-run-kill-buffers)
+
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (company-mode +1))
+
+(setq company-tooltip-align-annotations t)
+(add-hook 'typescript-mode-hook 'setup-tide-mode)
+(setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
 
 ;Custom functions
 (defun reload-init ()
