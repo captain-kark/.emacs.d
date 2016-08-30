@@ -51,6 +51,13 @@
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
+(global-git-gutter+-mode)
+(require 'git-gutter-fringe+)
+
+(set-face-foreground 'git-gutter+-modified "yellow")
+(set-face-foreground 'git-gutter+-added    "blue")
+(set-face-foreground 'git-gutter+-deleted  "red")
+
 (add-hook 'json-mode-hook (lambda () (interactive) (setq tab-width 2)))
 
 (autoload 'markdown-mode "markdown-mode"
@@ -171,6 +178,7 @@
 (global-set-key [(control f9)] 'reload-init)
 (global-set-key [(control f11)] 'show-file-name)
 (global-set-key [(control f12)] 'describe-key)
+(global-set-key [(backtab)] 'company-complete)
 (global-set-key (kbd "s-{") 'previous-buffer)
 (global-set-key (kbd "s-}") 'next-buffer)
 (global-set-key (kbd "s-t") 'new-browser-tab)
