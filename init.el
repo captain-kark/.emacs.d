@@ -51,12 +51,21 @@
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
-(global-git-gutter+-mode)
-(require 'git-gutter-fringe+)
+(global-git-gutter-mode t)
+(custom-set-variables
+ '(git-gutter:ask-p nil)
+ '(git-gutter:update-interval 2)
+ '(git-gutter:visual-line t)
+ '(git-gutter:handled-backends '(git)))
 
-(set-face-foreground 'git-gutter+-modified "#CEB300")
-(set-face-foreground 'git-gutter+-added    "#0E3389")
-(set-face-foreground 'git-gutter+-deleted  "#803C3C")
+(require 'git-gutter-fringe)
+
+(set-face-foreground 'git-gutter:modified "#CEB300")
+(set-face-background 'git-gutter:modified "#CEB300")
+(set-face-foreground 'git-gutter:added    "#0E3389")
+(set-face-background 'git-gutter:added    "#0E3389")
+(set-face-foreground 'git-gutter:deleted  "#803C3C")
+(set-face-background 'git-gutter:deleted  "#803C3C")
 
 (add-hook 'json-mode-hook (lambda () (interactive) (setq tab-width 2)))
 
@@ -189,15 +198,12 @@
 (global-set-key (kbd "M-s-<down>") 'windmove-down)
 (global-set-key (kbd "M-s-<left>") 'windmove-left)
 (global-set-key (kbd "<s-return>") 'newline-and-indent)
-(eval-after-load 'git-gutter+
-  '(progn
-     (define-key git-gutter+-mode-map (kbd "C-x a") 'git-gutter+-stage-hunks)
-     (define-key git-gutter+-mode-map (kbd "C-x A") 'git-gutter+-stage-whole-buffer)
-     (define-key git-gutter+-mode-map (kbd "C-x c i") 'git-gutter+-commit)
-     (define-key git-gutter+-mode-map (kbd "C-x c o") 'git-gutter+-revert-hunk)
-     (define-key git-gutter+-mode-map (kbd "C-x d") 'git-gutter+-show-hunk-inline-at-point)
-     (define-key git-gutter+-mode-map (kbd "C-x <up>") 'git-gutter+-previous-hunk)
-     (define-key git-gutter+-mode-map (kbd "C-x <down>") 'git-gutter+-next-hunk)))
+(global-set-key (kbd "C-x a") 'git-gutter:stage-hunk)
+(global-set-key (kbd "C-x c i") 'git-gutter:commit)
+(global-set-key (kbd "C-x c o") 'git-gutter:revert-hunk)
+(global-set-key (kbd "C-x d") 'git-gutter:popup-hunk)
+(global-set-key (kbd "C-x <up>") 'git-gutter:previous-hunk)
+(global-set-key (kbd "C-x <down>") 'git-gutter:next-hunk)
 (global-set-key (kbd "C-x M-s-<down>") 'halve-this-window-height)
 (global-set-key (kbd "C-x M-s-<up>") 'halve-other-window-height)
 (global-set-key (kbd "C-x n") 'rename-buffer)
