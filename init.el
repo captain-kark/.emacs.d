@@ -70,18 +70,19 @@
 (add-hook 'json-mode-hook (lambda () (interactive) (setq tab-width 2)))
 
 (autoload 'markdown-mode "markdown-mode"
-       "Major mode for editing Markdown files" t)
-    (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-    (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-    (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+  "Major mode for editing Markdown files" t)
+
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-hook 'markdown-mode-hook
-      (lambda ()
-        (local-unset-key (kbd "M-<up>"))
-        (local-unset-key (kbd "M-<down>"))
-        (local-unset-key (kbd "M-<left>"))
-        (local-unset-key (kbd "M-<right>"))
-        (toggle-truncate-lines)
-        (adaptive-wrap-prefix-mode)))
+          (lambda ()
+            (local-unset-key (kbd "M-<up>"))
+            (local-unset-key (kbd "M-<down>"))
+            (local-unset-key (kbd "M-<left>"))
+            (local-unset-key (kbd "M-<right>"))
+            (toggle-truncate-lines)
+            (adaptive-wrap-prefix-mode)))
 
 (setq-default truncate-lines 1)
 
