@@ -69,6 +69,9 @@
 
 (add-hook 'json-mode-hook (lambda () (interactive) (setq tab-width 2)))
 
+;; magit does not support git hooks, use with care
+(setq magit-commit-arguments (quote ("--no-verify")))
+
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 
