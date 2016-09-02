@@ -54,6 +54,7 @@
 (global-git-gutter-mode t)
 (custom-set-variables
  '(git-gutter:ask-p nil)
+ '(git-gutter:handled-backends (quote (git)))
  '(git-gutter:update-interval 2)
  '(git-gutter:visual-line t)
  '(git-gutter:handled-backends '(git)))
