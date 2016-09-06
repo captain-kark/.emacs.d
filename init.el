@@ -99,8 +99,6 @@
     (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
     (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
 
-(global-smartscan-mode 1)
-
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 (setq tramp-default-method "ssh")
 
@@ -187,6 +185,7 @@
 
 ;custom keys
 ;;;;;;;;;;;;
+(global-unset-key (kbd "C-x l")) ;; count-lines-page
 ;global
 (global-set-key [(control f5)] 'restart-shell)
 (global-set-key [(control f9)] 'reload-init)
@@ -208,6 +207,7 @@
 (global-set-key (kbd "C-x c o") 'git-gutter:revert-hunk)
 (global-set-key (kbd "C-x d") 'magit-diff-unstaged)
 (global-set-key (kbd "C-x D") 'magit-diff-staged)
+(global-set-key (kbd "C-x l g") 'magit-log-current)
 (global-set-key (kbd "C-x p") 'magit-push-to-remote)
 (global-set-key (kbd "C-x <up>") 'git-gutter:previous-hunk)
 (global-set-key (kbd "C-x <down>") 'git-gutter:next-hunk)
