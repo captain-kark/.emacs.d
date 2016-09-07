@@ -209,6 +209,7 @@
 (global-set-key (kbd "C-x D") 'magit-diff-staged)
 (global-set-key (kbd "C-x l g") 'magit-log-current)
 (global-set-key (kbd "C-x p") 'magit-push-to-remote)
+(global-set-key (kbd "C-x r") 'magit-rebase-interactive)
 (global-set-key (kbd "C-x <up>") 'git-gutter:previous-hunk)
 (global-set-key (kbd "C-x <down>") 'git-gutter:next-hunk)
 (global-set-key (kbd "C-x M-s-<down>") 'halve-this-window-height)
