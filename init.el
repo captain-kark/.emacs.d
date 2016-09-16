@@ -53,11 +53,15 @@
 
 (global-git-gutter-mode t)
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(git-gutter:ask-p nil)
  '(git-gutter:handled-backends (quote (git)))
  '(git-gutter:update-interval 2)
  '(git-gutter:visual-line t)
- '(git-gutter:handled-backends '(git)))
+ '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256"))))
 
 (require 'git-gutter-fringe)
 
@@ -209,7 +213,7 @@
 (global-set-key (kbd "C-x D") 'magit-diff-staged)
 (global-set-key (kbd "C-x l g") 'magit-log-current)
 (global-set-key (kbd "C-x p") 'magit-push-to-remote)
-(global-set-key (kbd "C-x r") 'magit-rebase-interactive)
+(global-set-key (kbd "C-x R") 'magit-rebase-interactive)
 (global-set-key (kbd "C-x <up>") 'git-gutter:previous-hunk)
 (global-set-key (kbd "C-x <down>") 'git-gutter:next-hunk)
 (global-set-key (kbd "C-x M-s-<down>") 'halve-this-window-height)
