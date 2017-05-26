@@ -137,6 +137,8 @@
 (add-hook 'typescript-mode-hook 'setup-tide-mode)
 (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
 
+(winner-mode 1)
+
 ;Custom functions
 (defun reload-init ()
   "Reload init.el without restarting."
@@ -215,6 +217,7 @@
 (global-set-key (kbd "C-c p") 'flycheck-previous-error)
 (global-set-key (kbd "C-c w") 'whitespace-cleanup)
 (global-set-key (kbd "C-c ~") 'flycheck-buffer)
+(global-set-key (kbd "C-x !") 'winner-undo)
 (global-set-key (kbd "C-x <down>") 'git-gutter:next-hunk)
 (global-set-key (kbd "C-x <up>") 'git-gutter:previous-hunk)
 (global-set-key (kbd "C-x C-z") nil) ;; stop annoying suspend frame behavior
