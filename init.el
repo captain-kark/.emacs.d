@@ -111,6 +111,10 @@
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 (setq tramp-default-method "ssh")
 
+(require 'yafolding)
+(add-hook 'prog-mode-hook
+          (lambda () (yafolding-mode)))
+
 (require 'yasnippet)
 (setq yas-snippet-dirs
       '("~/.emacs.d/snippets/"))
@@ -169,7 +173,9 @@
   "Convert all Windows newlines to Unix styles line endings."
   (set-buffer-file-coding-system 'utf-8))
 (add-hook 'before-save-hook 'unix-newline)
-(add-hook 'before-save-hook 'whitespace-cleanup)
+(add-hook 'before-save-hook (lambda ()
+                              (yafolding-show-all)
+                              (whitespace-cleanup)))
 
 (defun restart-shell ()
   "Restart (or start a new) shell in current buffer."
