@@ -38,7 +38,18 @@
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
-(load-theme 'base16-atelierforest-dark t)
+;; https://lists.gnu.org/archive/html/emacs-devel/2017-09/msg00211.html
+;; Enriched Text mode has its support for decoding 'x-display' disabled.
+;; This feature allows saving 'display' properties as part of text.
+;; Emacs 'display' properties support evaluation of arbitrary Lisp forms
+;; as part of instantiating the property, so decoding 'x-display' is
+;; vulnerable to executing arbitrary malicious Lisp code included in the
+;; text (e.g., sent as part of an email message).
+(eval-after-load "enriched"
+  '(defun enriched-decode-display-prop (start end &optional param)
+     (list start end)))
+
+(load-theme 'base16-atelier-forest t)
 
 (add-hook 'after-init-hook 'global-company-mode)
 
