@@ -169,7 +169,6 @@
 (setq ring-bell-function 'ignore)
 (setq-default truncate-lines 1)
 (show-paren-mode 1)
-(set-face-attribute 'default nil :height 120)
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (defvar flycheck-check-syntax-automatically)
@@ -178,8 +177,6 @@
 
 ;extra mode configs
 (setq-default indent-tabs-mode nil)
-(add-to-list 'default-frame-alist '(height . 80))
-(add-to-list 'default-frame-alist '(width . 110))
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
