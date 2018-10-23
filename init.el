@@ -48,6 +48,8 @@
 (load-theme 'base16-atelier-forest t)
 
 (add-hook 'after-init-hook 'global-company-mode)
+(require 'company-terraform)
+(company-terraform-init)
 
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
