@@ -30,10 +30,6 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
-;; this is just to start tsserver, not to execute anything relevant to project code
-(setenv "PATH" (concat (getenv "PATH") ":~/.nvm/versions/node/v5.11.1/bin"))
-    (setq exec-path (append exec-path '("~/.nvm/versions/node/v5.11.1/bin")))
-
 ;; this gets ag working
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
@@ -89,6 +85,7 @@
 (set-face-background 'git-gutter:deleted  "#803C3C")
 
 (add-hook 'json-mode-hook (lambda () (interactive) (setq tab-width 2)))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . jsx-mode))
 
 ;; magit does not support git hooks, use with care
 (setq magit-commit-arguments (quote ("--no-verify")))
