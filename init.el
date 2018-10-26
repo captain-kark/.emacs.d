@@ -75,7 +75,10 @@
  '(git-gutter:handled-backends (quote (git)))
  '(git-gutter:update-interval 2)
  '(git-gutter:visual-line t)
- '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256"))))
+ '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
+ '(package-selected-packages
+   (quote
+    (yasnippet yafolding tide rainbow-mode nvm multiple-cursors markdown-mode magit less-css-mode jsx-mode helm-ag groovy-mode go-mode git-gutter-fringe erlang dockerfile-mode docker-compose-mode company-terraform coffee-mode base16-theme adaptive-wrap))))
 
 (require 'git-gutter-fringe)
 
@@ -289,3 +292,9 @@
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
