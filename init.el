@@ -78,7 +78,7 @@
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(package-selected-packages
    (quote
-    (yasnippet yafolding tide rainbow-mode nvm multiple-cursors markdown-mode magit less-css-mode jsx-mode helm-ag groovy-mode go-mode git-gutter-fringe erlang dockerfile-mode docker-compose-mode company-terraform coffee-mode base16-theme adaptive-wrap))))
+    (yasnippet yafolding tide rainbow-mode nvm multiple-cursors markdown-mode less-css-mode jsx-mode helm-ag groovy-mode go-mode git-gutter-fringe erlang dockerfile-mode docker-compose-mode company-terraform coffee-mode base16-theme adaptive-wrap))))
 
 (require 'git-gutter-fringe)
 
