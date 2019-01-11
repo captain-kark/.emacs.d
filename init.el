@@ -135,7 +135,6 @@
 
 (helm-mode 1)
 (helm-autoresize-mode 1)
-(helm-push-mark-mode 1)
 (define-key global-map [remap list-buffers] 'helm-buffers-list)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-y") 'helm-show-kill-ring)
