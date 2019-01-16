@@ -78,7 +78,7 @@
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(package-selected-packages
    (quote
-    (yasnippet yafolding tide rainbow-mode nvm multiple-cursors markdown-mode less-css-mode jsx-mode helm-ag groovy-mode go-mode git-gutter-fringe erlang dockerfile-mode docker-compose-mode company-terraform coffee-mode base16-theme adaptive-wrap))))
+    (use-package helm-projectile pipenv projectile pyenv-mode yasnippet yafolding tide rainbow-mode nvm multiple-cursors markdown-mode less-css-mode jsx-mode helm-ag groovy-mode go-mode git-gutter-fringe erlang dockerfile-mode docker-compose-mode company-terraform coffee-mode base16-theme adaptive-wrap))))
 
 (require 'git-gutter-fringe)
 
@@ -113,6 +113,14 @@
 (setq-default truncate-lines 1)
 
 (require 'multiple-cursors)
+
+(use-package pipenv
+  :hook (python-mode . pipenv-mode)
+  :init
+  (setq
+   pipenv-projectile-after-switch-function
+   #'pipenv-projectile-after-switch-extended))
+(pyenv-mode)
 
 (add-hook 'css-mode-hook 'rainbow-mode)
 (add-hook 'sass-mode-hook 'rainbow-mode)
