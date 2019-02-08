@@ -31,8 +31,8 @@
    version-control t)       ; use versioned backups
 
 ;; this gets ag working
-;; (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-;; (setq exec-path (append exec-path '("/usr/local/bin")))
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 (exec-path-from-shell-initialize)
 
 ;; https://lists.gnu.org/archive/html/emacs-devel/2017-09/msg00211.html
@@ -77,7 +77,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(debug-on-error 0)
  '(git-gutter:ask-p nil)
  '(git-gutter:handled-backends (quote (git)))
  '(git-gutter:update-interval 2)
