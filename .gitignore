@@ -13,3 +13,5 @@ tramp
 *.notes
 bookmarks
 helm*
+.python-environments/
+projectile-bookmarks.eld

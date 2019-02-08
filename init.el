@@ -31,8 +31,9 @@
    version-control t)       ; use versioned backups
 
 ;; this gets ag working
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-(setq exec-path (append exec-path '("/usr/local/bin")))
+;; (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+;; (setq exec-path (append exec-path '("/usr/local/bin")))
+(exec-path-from-shell-initialize)
 
 ;; https://lists.gnu.org/archive/html/emacs-devel/2017-09/msg00211.html
 ;; Enriched Text mode has its support for decoding 'x-display' disabled.
@@ -51,11 +52,16 @@
 (require 'company-terraform)
 (company-terraform-init)
 
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+(add-hook 'python-mode-hook 'my/python-mode-hook)
+
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 (add-hook 'coffee-mode-hook (lambda () (interactive) (setq tab-width 2)))
 (add-hook 'go-mode-hook (lambda () (interactive) (setq tab-width 4)))
+(add-hook 'python-mode-hook 'jedi:setup)
 
 (column-number-mode t)
 (require 'flycheck)
@@ -71,6 +77,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(debug-on-error 0)
  '(git-gutter:ask-p nil)
  '(git-gutter:handled-backends (quote (git)))
  '(git-gutter:update-interval 2)
@@ -78,7 +85,7 @@
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(package-selected-packages
    (quote
-    (use-package helm-projectile pipenv projectile pyenv-mode yasnippet yafolding tide rainbow-mode nvm multiple-cursors markdown-mode less-css-mode jsx-mode helm-ag groovy-mode go-mode git-gutter-fringe erlang dockerfile-mode docker-compose-mode company-terraform coffee-mode base16-theme adaptive-wrap))))
+    (exec-path-from-shell company-jedi use-package helm-projectile pipenv projectile pyenv-mode yasnippet yafolding tide rainbow-mode nvm multiple-cursors markdown-mode less-css-mode jsx-mode helm-ag groovy-mode go-mode git-gutter-fringe erlang dockerfile-mode docker-compose-mode company-terraform coffee-mode base16-theme adaptive-wrap))))
 
 (require 'git-gutter-fringe)
 
@@ -228,7 +235,7 @@
 (global-set-key [(control f9)] 'reload-init)
 (global-set-key [(control f11)] 'show-file-name)
 (global-set-key [(control f12)] 'describe-key)
-(global-set-key [(backtab)] 'company-complete)
+(global-set-key [(control tab)] 'company-complete)
 (global-set-key (kbd "<s-return>") 'newline-and-indent)
 (global-set-key (kbd "C-S-z") (lambda () (interactive) (forward-whitespace -1)))
 (global-set-key (kbd "C-c /") 'comment-region)
