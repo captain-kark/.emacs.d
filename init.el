@@ -227,6 +227,29 @@
   (setq js-indent-level tab-size)
   (retabify-buffer))
 
+(defun duplicate-line-or-region (&optional n)
+  "Duplicate current line, or region if active.
+With argument N, make N copies.
+With negative N, comment out original line and use the absolute value.
+Taken from https://stackoverflow.com/a/4717026/881224"
+  (interactive "*p")
+  (let ((use-region (use-region-p)))
+    (save-excursion
+      (let ((text (if use-region        ;Get region if active, otherwise line
+                      (buffer-substring (region-beginning) (region-end))
+                    (prog1 (thing-at-point 'line)
+                      (end-of-line)
+                      (if (< 0 (forward-line 1)) ;Go to beginning of next line, or make a new one
+                          (newline))))))
+        (dotimes (i (abs (or n 1)))     ;Insert N times, or once if not specified
+          (insert text))))
+    (if use-region nil                  ;Only if we're working with a line (not a region)
+      (let ((pos (- (point) (line-beginning-position)))) ;Save column
+        (if (> 0 n)                             ;Comment out original with negative arg
+            (comment-region (line-beginning-position) (line-end-position)))
+        (forward-line 1)
+        (forward-char pos)))))
+
 ;custom keys
 ;;;;;;;;;;;;
 (global-unset-key (kbd "C-x l")) ;; count-lines-page
@@ -246,6 +269,7 @@
 (global-set-key (kbd "C-c S") 'sort-lines)
 (global-set-key (kbd "C-c W") 'flush-blank-lines)
 (global-set-key (kbd "C-c a g") 'helm-do-ag-project-root)
+(global-set-key (kbd "C-c d") 'duplicate-line-or-region)
 (global-set-key (kbd "C-c n") 'flycheck-next-error)
 (global-set-key (kbd "C-c p") 'flycheck-previous-error)
 (global-set-key (kbd "C-c w") 'whitespace-cleanup)
