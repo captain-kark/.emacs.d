@@ -15,20 +15,17 @@
    t)
   (package-initialize))
 
-;; store all backup and autosave files in the tmp dir
-(setq backup-directory-alist
-      `((".*" ., temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*", temporary-file-directory t)))
-
 (setq
-   backup-by-copying t      ; don't clobber symlinks
+   backup-by-copying t
    backup-directory-alist
-    '(("." . "~/.emacs.d/auto-save-list"))    ; don't litter my fs tree
+    '(("." . "~/.emacs.d/auto-save-list"))
    delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)       ; use versioned backups
+   kept-new-versions 2000
+   kept-old-versions 0
+   version-control t)
+
+(require 'backup-each-save)
+(add-hook 'after-save-hook 'backup-each-save)
 
 ;; this gets ag working
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
@@ -81,10 +78,12 @@
  '(git-gutter:handled-backends (quote (git)))
  '(git-gutter:update-interval 2)
  '(git-gutter:visual-line t)
+ '(helm-ff-newfile-prompt-p t)
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(package-selected-packages
    (quote
-    (exec-path-from-shell company-jedi use-package helm-projectile pipenv projectile pyenv-mode yasnippet yafolding tide rainbow-mode nvm multiple-cursors markdown-mode less-css-mode jsx-mode helm-ag groovy-mode go-mode git-gutter-fringe erlang dockerfile-mode docker-compose-mode company-terraform coffee-mode base16-theme adaptive-wrap))))
+    (flycheck-pycheckers pyvenv backup-each-save exec-path-from-shell company-jedi use-package helm-projectile pipenv projectile pyenv-mode yasnippet yafolding tide rainbow-mode nvm multiple-cursors markdown-mode less-css-mode jsx-mode helm-ag groovy-mode go-mode git-gutter-fringe erlang dockerfile-mode docker-compose-mode company-terraform coffee-mode base16-theme adaptive-wrap)))
+ '(savehist-mode t))
 
 (require 'git-gutter-fringe)
 
@@ -274,6 +273,7 @@ Taken from https://stackoverflow.com/a/4717026/881224"
 (global-set-key (kbd "C-c w") 'whitespace-cleanup)
 (global-set-key (kbd "C-c ~") 'flycheck-buffer)
 (global-set-key (kbd "C-x !") 'winner-undo)
+(global-set-key (kbd "C-x @") 'winner-redo)
 (global-set-key (kbd "C-x <down>") 'git-gutter:next-hunk)
 (global-set-key (kbd "C-x <up>") 'git-gutter:previous-hunk)
 (global-set-key (kbd "C-x C-z") nil) ;; stop annoying suspend frame behavior
