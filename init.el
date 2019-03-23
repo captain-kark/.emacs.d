@@ -74,6 +74,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(flycheck-pycheckers-checkers (quote (pylint mypy3 pyflakes bandit)))
  '(flycheck-pycheckers-venv-root "~/.pyenv/versions/")
  '(git-gutter:ask-p nil)
  '(git-gutter:handled-backends (quote (git)))
@@ -136,9 +137,7 @@
   (add-to-list 'exec-path "~/.pyenv/shims")
   (setenv "WORKON_HOME" "~/.pyenv/versions/")
   :config
-  (pyenv-mode)
-  :bind
-  ("C-x p e" . pyenv-activate-current-project))
+  (pyenv-mode))
 
 (defvar pyenv-current-version nil nil)
 
@@ -154,6 +153,8 @@
 (global-flycheck-mode 1)
 (with-eval-after-load 'flycheck
   (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
+(defvar flycheck-check-syntax-automatically)
+(setq flycheck-check-syntax-automatically '(save))
 
 (add-hook 'css-mode-hook 'rainbow-mode)
 (add-hook 'sass-mode-hook 'rainbow-mode)
@@ -339,11 +340,6 @@ Taken from https://stackoverflow.com/a/4717026/881224"
 (setq ring-bell-function 'ignore)
 (setq ispell-program-name "/usr/local/bin/ispell")
 (show-paren-mode 1)
-
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(defvar flycheck-check-syntax-automatically)
-(setq flycheck-check-syntax-automatically '(save))
-'flycheck '(setq flycheck-checkers (delq 'html-tidy flycheck-checkers))
 
 ;extra mode configs
 (setq-default indent-tabs-mode nil)

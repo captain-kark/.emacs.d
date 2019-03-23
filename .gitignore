@@ -16,3 +16,4 @@ helm*
 .python-environments/
 projectile-bookmarks.eld
 history
+.mypy_cache
