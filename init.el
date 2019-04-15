@@ -159,21 +159,14 @@
 (add-hook 'css-mode-hook 'rainbow-mode)
 (add-hook 'sass-mode-hook 'rainbow-mode)
 
+(recentf-mode 1)
+
 (autoload 'sass-mode "sass-mode")
     (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
     (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
 
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 (setq tramp-default-method "ssh")
-
-(require 'yafolding)
-(add-hook 'prog-mode-hook
-          (lambda () (yafolding-mode)))
-
-(require 'yasnippet)
-(setq yas-snippet-dirs
-      '("~/.emacs.d/snippets/"))
-(yas-global-mode t)
 
 (helm-mode 1)
 (helm-autoresize-mode 1)
@@ -228,7 +221,6 @@
   (set-buffer-file-coding-system 'utf-8))
 (add-hook 'before-save-hook 'unix-newline)
 (add-hook 'before-save-hook (lambda ()
-                              (yafolding-show-all)
                               (whitespace-cleanup)))
 
 (defun restart-shell ()
@@ -288,6 +280,7 @@ Taken from https://stackoverflow.com/a/4717026/881224"
 (global-set-key [(control tab)] 'company-complete)
 (global-set-key (kbd "<s-return>") 'newline-and-indent)
 (global-set-key (kbd "C-S-z") (lambda () (interactive) (forward-whitespace -1)))
+(global-set-key (kbd "C-S-t") 'recentf-open-most-recent-file)
 (global-set-key (kbd "C-c /") 'comment-region)
 (global-set-key (kbd "C-c <backtab>") 'retabify-buffer-to)
 (global-set-key (kbd "C-c <tab>") 'retabify-buffer)
