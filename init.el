@@ -27,11 +27,6 @@
 (require 'backup-each-save)
 (add-hook 'after-save-hook 'backup-each-save)
 
-;; this gets ag working
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-(setq exec-path (append exec-path '("/usr/local/bin")))
-(exec-path-from-shell-initialize)
-
 ;; https://lists.gnu.org/archive/html/emacs-devel/2017-09/msg00211.html
 ;; Enriched Text mode has its support for decoding 'x-display' disabled.
 ;; This feature allows saving 'display' properties as part of text.
@@ -344,6 +339,11 @@ Taken from https://stackoverflow.com/a/4717026/881224"
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'erase-buffer 'disabled nil)
+
+;; this gets ag working
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+(exec-path-from-shell-initialize)
 
 (server-start)
 
