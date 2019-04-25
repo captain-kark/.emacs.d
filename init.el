@@ -58,6 +58,7 @@
 
 (add-hook 'coffee-mode-hook (lambda () (interactive) (setq tab-width 2)))
 (add-hook 'go-mode-hook (lambda () (interactive) (setq tab-width 4)))
+
 (add-hook 'python-mode-hook 'jedi:setup)
 
 (column-number-mode t)
@@ -155,6 +156,10 @@
   (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
 (defvar flycheck-check-syntax-automatically)
 (setq flycheck-check-syntax-automatically '(save))
+
+(let ((govet (flycheck-checker-get 'go-vet 'command)))
+  (when (equal (cadr govet) "tool")
+    (setf (cdr govet) (cddr govet))))
 
 (add-hook 'css-mode-hook 'rainbow-mode)
 (add-hook 'sass-mode-hook 'rainbow-mode)

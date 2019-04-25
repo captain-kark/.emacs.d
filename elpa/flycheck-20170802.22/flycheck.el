@@ -7489,7 +7489,7 @@ enabled. "
 
 See URL `https://golang.org/cmd/go/' and URL
 `https://golang.org/cmd/vet/'."
-  :command ("go" "vet" "-all"
+  :command ("go" "tool" "vet" "-all"
             (option "-printfuncs=" flycheck-go-vet-print-functions concat
                     flycheck-option-comma-separated-list)
             (option-flag "-shadow" flycheck-go-vet-shadow)
