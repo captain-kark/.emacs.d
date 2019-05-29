@@ -80,7 +80,8 @@
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(package-selected-packages
    (quote
-    (flycheck-golangci-lint flycheck-gometalinter flymake-go flycheck-pycheckers pyvenv backup-each-save exec-path-from-shell company-jedi use-package helm-projectile pipenv projectile pyenv-mode tide rainbow-mode nvm multiple-cursors markdown-mode less-css-mode jsx-mode helm-ag groovy-mode go-mode git-gutter-fringe erlang dockerfile-mode docker-compose-mode company-terraform coffee-mode base16-theme adaptive-wrap)))
+    (plantuml-mode flycheck-golangci-lint flycheck-gometalinter flymake-go flycheck-pycheckers pyvenv backup-each-save exec-path-from-shell company-jedi use-package helm-projectile pipenv projectile pyenv-mode tide rainbow-mode nvm multiple-cursors markdown-mode less-css-mode jsx-mode helm-ag groovy-mode go-mode git-gutter-fringe erlang dockerfile-mode docker-compose-mode company-terraform coffee-mode base16-theme adaptive-wrap)))
+ '(plantuml-jar-path "~/.emacs.d/elpa/plantuml-mode-20190510.657/plantuml.jar")
  '(savehist-mode t))
 
 (require 'git-gutter-fringe)
@@ -126,6 +127,9 @@
                (pyenv-current-version (s-trim (f-read-text pyenv-version-path 'utf-8))))
           (pyenv-mode-set pyenv-current-version)
           (message (concat "Setting virtualenv to " pyenv-current-version))))))
+
+(add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
+(add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode))
 
 (use-package pyenv-mode
   :hook (python-mode . pyenv-activate-current-project)
