@@ -14,7 +14,7 @@
 
 (add-hook 'after-init-hook 'global-company-mode)
 
-(load-theme 'base16-atelierforest-dark t)
+(load-theme 'base16-atelier-forest t)
 
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -30,7 +30,6 @@
 
 (helm-mode 1)
 (helm-autoresize-mode 1)
-(helm-push-mark-mode 1)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-y") 'helm-show-kill-ring)
@@ -47,13 +46,6 @@
 
 (require 'rainbow-mode)
 
-(require 'rvm)
-(rvm-use-default)
-
-(autoload 'sass-mode "sass-mode")
-    (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
-    (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
-
 (setq tramp-default-method "ssh")
 
 (defun setup-tide-mode ()
@@ -67,11 +59,6 @@
 (setq company-tooltip-align-annotations t)
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
-
-(require 'yasnippet)
-(setq yas-snippet-dirs
-      '("~/.emacs.d/snippets/"))
-(yas-global-mode t)
 
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
 (custom-set-variables
