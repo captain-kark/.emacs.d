@@ -1,5 +1,4 @@
 ;; package -- Summary
-
 ;;; Commentary:
 
 ;;; Code:
@@ -43,7 +42,12 @@
 (company-terraform-init)
 
 (defun my/python-mode-hook ()
-  (add-to-list 'company-backends 'company-jedi))
+  (add-to-list 'company-backends 'company-jedi)
+  (eval-after-load 'jedi
+    '(progn
+       (define-key jedi-mode-map (kbd "C-c ?") nil)
+       (define-key jedi-mode-map (kbd "C-c /") nil))))
+
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 
 (add-hook 'text-mode-hook 'flyspell-mode)
