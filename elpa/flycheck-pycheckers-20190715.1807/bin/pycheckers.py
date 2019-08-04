@@ -683,8 +683,7 @@ class PylintRunner(LintRunner):
             '--reports', 'n',
             # This is additive, not replacing
             '--enable=' + ','.join(self.enable_codes),
-            '--dummy-variables-rgx=' + '_.*',
-            '--max-line-length', str(self.options.max_line_length),
+            '--dummy-variables-rgx=' + '_.*'
         ]
         if self.options.pylint_rcfile:
             args.extend(['--rcfile', self.options.pylint_rcfile])
@@ -838,6 +837,10 @@ class BanditRunner(LintRunner):
     def get_run_flags(self, _filepath):
         # type: (str) -> Iterable[str]
         flags = ['-f', 'csv']
+        config_file = self.find_config_file('bandit_config_file', ['.bandit'])
+        if config_file:
+            flags += ['--ini', config_file]
+
         if self.ignore_codes is not None:
             # NOTE: this doesn't work if the code isn't recognized as a bandit
             # code (e.g. pylint errors)
