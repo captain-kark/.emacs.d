@@ -53,7 +53,6 @@
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
-(add-hook 'coffee-mode-hook (lambda () (interactive) (setq tab-width 2)))
 (add-hook 'go-mode-hook (lambda () (interactive) (setq tab-width 4)))
 
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -157,12 +156,7 @@
 
 (recentf-mode 1)
 
-(autoload 'sass-mode "sass-mode")
-    (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
-    (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
-
-(set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
-(setq tramp-default-method "ssh")
+(require 'sudo-edit)
 
 (helm-mode 1)
 (helm-autoresize-mode 1)
@@ -254,6 +248,7 @@ Taken from https://stackoverflow.com/a/4717026/881224"
 (global-set-key (kbd "C-c w") 'whitespace-cleanup)
 (global-set-key (kbd "C-S-t") 'recentf-open-most-recent-file)
 (global-set-key (kbd "C-S-z") (lambda () (interactive) (forward-whitespace -1)))
+(global-set-key (kbd "C-x c o") 'git-gutter:revert-hunk)
 (global-set-key (kbd "C-x C-z") nil) ;; stop annoying suspend frame behavior
 (global-set-key (kbd "C-x !") 'winner-undo)
 (global-set-key (kbd "C-x @") 'winner-redo)
