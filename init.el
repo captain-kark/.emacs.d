@@ -77,7 +77,6 @@
  '(git-gutter:update-interval 2)
  '(git-gutter:visual-line t)
  '(helm-ff-newfile-prompt-p t)
- '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(package-selected-packages
    (quote
     (plantuml-mode flycheck-golangci-lint flycheck-gometalinter flymake-go flycheck-pycheckers pyvenv backup-each-save exec-path-from-shell company-jedi use-package helm-projectile pipenv projectile pyenv-mode tide rainbow-mode nvm multiple-cursors markdown-mode less-css-mode helm-ag go-mode git-gutter-fringe dockerfile-mode docker-compose-mode company-terraform base16-theme adaptive-wrap)))
@@ -94,10 +93,6 @@
 (set-face-background 'git-gutter:deleted  "#803C3C")
 
 (add-hook 'json-mode-hook (lambda () (interactive) (setq tab-width 2)))
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . jsx-mode))
-
-;; magit does not support git hooks, use with care
-(setq magit-commit-arguments (quote ("--no-verify")))
 
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
@@ -161,13 +156,8 @@
     (setf (cdr govet) (cddr govet))))
 
 (add-hook 'css-mode-hook 'rainbow-mode)
-(add-hook 'sass-mode-hook 'rainbow-mode)
 
 (recentf-mode 1)
-
-(autoload 'sass-mode "sass-mode")
-    (add-to-list 'auto-mode-alist '("\\.scss\\'" . sass-mode))
-    (add-to-list 'auto-mode-alist '("\\.sass\\'" . sass-mode))
 
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 (setq tramp-default-method "ssh")
@@ -303,17 +293,11 @@ Taken from https://stackoverflow.com/a/4717026/881224"
 (global-set-key (kbd "C-x <down>") 'git-gutter:next-hunk)
 (global-set-key (kbd "C-x <up>") 'git-gutter:previous-hunk)
 (global-set-key (kbd "C-x C-z") nil) ;; stop annoying suspend frame behavior
-(global-set-key (kbd "C-x D") 'magit-diff-staged)
 (global-set-key (kbd "C-x M-s-<down>") 'halve-this-window-height)
 (global-set-key (kbd "C-x M-s-<up>") 'halve-other-window-height)
-(global-set-key (kbd "C-x R") 'magit-rebase-interactive)
 (global-set-key (kbd "C-x a") 'git-gutter:stage-hunk)
-(global-set-key (kbd "C-x c i") 'magit-commit)
 (global-set-key (kbd "C-x c o") 'git-gutter:revert-hunk)
-(global-set-key (kbd "C-x d") 'magit-diff-unstaged)
-(global-set-key (kbd "C-x l g") 'magit-log-current)
 (global-set-key (kbd "C-x n") 'rename-buffer)
-(global-set-key (kbd "C-x p") 'magit-push-to-remote)
 (global-set-key (kbd "C-z") 'forward-whitespace)
 (global-set-key (kbd "M-<down>") 'forward-paragraph)
 (global-set-key (kbd "M-<up>") 'backward-paragraph)
