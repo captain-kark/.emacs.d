@@ -241,6 +241,7 @@ Taken from https://stackoverflow.com/a/4717026/881224"
 (global-set-key (kbd "C-M-s-<down>") 'enlarge-window)
 (global-set-key (kbd "C-M-s-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "C-M-s-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-c C-_") 'helm-recentf)
 (global-set-key (kbd "C-c /") 'comment-region)
 (global-set-key (kbd "C-c ?") 'uncomment-region)
 (global-set-key (kbd "C-c S") 'sort-lines)
