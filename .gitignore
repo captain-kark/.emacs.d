@@ -6,6 +6,7 @@ ac-comphist.dat
 autosaves/*
 backups/*
 elpa/archives/
+elpa/gnupg/
 games/*
 session.*
 .mc-lists.el
