@@ -77,9 +77,10 @@
  '(git-gutter:update-interval 2)
  '(git-gutter:visual-line t)
  '(helm-ff-newfile-prompt-p t)
+ '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(package-selected-packages
    (quote
-    (plantuml-mode flycheck-golangci-lint flycheck-gometalinter flymake-go flycheck-pycheckers pyvenv backup-each-save exec-path-from-shell company-jedi use-package helm-projectile pipenv projectile pyenv-mode tide rainbow-mode nvm multiple-cursors markdown-mode less-css-mode helm-ag go-mode git-gutter-fringe dockerfile-mode docker-compose-mode company-terraform base16-theme adaptive-wrap)))
+    (kubernetes plantuml-mode flycheck-golangci-lint flycheck-gometalinter flymake-go flycheck-pycheckers pyvenv backup-each-save exec-path-from-shell company-jedi use-package helm-projectile pipenv projectile pyenv-mode tide rainbow-mode nvm multiple-cursors markdown-mode less-css-mode helm-ag go-mode git-gutter-fringe dockerfile-mode docker-compose-mode company-terraform base16-theme adaptive-wrap)))
  '(plantuml-jar-path "~/.emacs.d/elpa/plantuml-mode-20190510.657/plantuml.jar")
  '(savehist-mode t))
 
