@@ -729,11 +729,10 @@ class MyPy2Runner(LintRunner):
         under a subdir corresponding to the branch name.
         """
         branch_top = os.path.join(project_root, '.mypy_cache', 'branches')
-        # It doesn't make sense to get a branch name unless we actually found a
-        # VCS root (i.e. a virtualenv match isn't enough)
-        branch = ''                       # type: Optional[str]
-        if find_vcs_name(project_root):
-            branch = get_vcs_branch_name(project_root)
+        branch = ''  # type: Optional[str]
+        vcs_root = find_vcs_root(project_root)[0]
+        if vcs_root:
+            branch = get_vcs_branch_name(vcs_root)
         if branch:
             cache_dir = os.path.join(branch_top, branch)
         else:
@@ -765,6 +764,11 @@ class MyPy2Runner(LintRunner):
         config_file = self.find_config_file('mypy_config_file', ['mypy.ini'])
         if config_file:
             flags += ['--config-file', config_file]
+            mypy_config = ConfigParser()
+            mypy_config.read(config_file)
+            if mypy_config.has_option('mypy', 'mypy_path'):
+                # contextual source for mypy, useful when tests are outside module definition
+                flags += mypy_config.get('mypy', 'mypy_path').replace(':', ',').split(',')
 
         # Per Guido's suggestion, use the --shadow-file option to work around
         # https://github.com/msherry/flycheck-pycheckers/issues/2, so we can
