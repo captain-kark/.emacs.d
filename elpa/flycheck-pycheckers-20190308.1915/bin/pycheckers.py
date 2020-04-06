@@ -768,7 +768,11 @@ class MyPy2Runner(LintRunner):
             mypy_config.read(config_file)
             if mypy_config.has_option('mypy', 'mypy_path'):
                 # contextual source for mypy, useful when tests are outside module definition
-                flags += mypy_config.get('mypy', 'mypy_path').replace(':', ',').split(',')
+                for mypy_path in mypy_config.get('mypy', 'mypy_path').replace(':', ',').split(','):
+                    try:
+                        os.path.dirname(original_filepath).index(os.path.join(os.path.dirname(config_file), mypy_path))
+                    except ValueError:
+                        flags.append(mypy_path)
 
         # Per Guido's suggestion, use the --shadow-file option to work around
         # https://github.com/msherry/flycheck-pycheckers/issues/2, so we can
