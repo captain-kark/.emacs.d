@@ -233,9 +233,10 @@ class LintRunner(object):
         # type: (str, str) -> str
         """Find the root directory of the current project.
 
-        2. Walk up the directory tree looking for a VCS directory.
-        1. Failing that, find a virtualenv that matches a part of the
+        2. Walk up the directory tree looking for a
+               virtualenv that matches a part of the
                directory, and choose that as the root.
+        1. Failing that, find a VCS directory.
         3. Otherwise, just use the local directory.
         """
         # Case 1
@@ -719,6 +720,8 @@ class MyPy2Runner(LintRunner):
 
     _base_flags = [
         '--incremental',
+        '--follow-imports=error',
+        '--scripts-are-modules',
     ]
 
     def _get_cache_dir(self, project_root):
@@ -745,9 +748,6 @@ class MyPy2Runner(LintRunner):
         """Determine which mypy (2 or 3) to run, find the cache dir and config file"""
 
         flags = self._base_flags
-        if self.version < LooseVersion('0.660'):
-            # --quick-and-dirty is still available
-            flags += ['--quick-and-dirty']
 
         # TODO: this is a hack, we should clean this up in case the file
         # legitimately contains this string
@@ -764,15 +764,12 @@ class MyPy2Runner(LintRunner):
         config_file = self.find_config_file('mypy_config_file', ['mypy.ini'])
         if config_file:
             flags += ['--config-file', config_file]
-            mypy_config = ConfigParser()
-            mypy_config.read(config_file)
-            if mypy_config.has_option('mypy', 'mypy_path'):
-                # contextual source for mypy, useful when tests are outside module definition
-                for mypy_path in mypy_config.get('mypy', 'mypy_path').replace(':', ',').split(','):
-                    try:
-                        os.path.dirname(original_filepath).index(os.path.join(os.path.dirname(config_file), mypy_path))
-                    except ValueError:
-                        flags.append(mypy_path)
+            original_filedir = os.path.dirname(original_filepath)
+            for mypy_path in self.get_mypy_paths(config_file):
+                if self.is_file_in_mypy_path(original_filedir, mypy_path):
+                    # contextual source for a mypy module
+                    # i.e., when a module's tests are outside the module's definitions
+                    flags.append('-m ' + mypy_path)
 
         # Per Guido's suggestion, use the --shadow-file option to work around
         # https://github.com/msherry/flycheck-pycheckers/issues/2, so we can
@@ -804,6 +801,25 @@ class MyPy2Runner(LintRunner):
         """
         return filepath.replace('flycheck_', '')
 
+    def get_mypy_paths(self, config_file):
+        # type: (str) -> List[str]
+        """Mypy allows for both comma-delimited, as well as colon-delimited lists of paths
+        when setting mypy_path: https://mypy.readthedocs.io/en/stable/config_file.html#import-discovery
+        """
+        mypy_paths = []
+        mypy_config = ConfigParser()
+        mypy_config.read(config_file)
+        if mypy_config.has_option('mypy', 'mypy_path'):
+            config_dir = os.path.dirname(config_file)
+            for mypy_path in mypy_config.get('mypy', 'mypy_path').replace(':', ',').split(','):
+                mypy_paths.append(os.path.join(config_dir, mypy_path))
+        return mypy_paths
+
+    def is_file_in_mypy_path(self, original_filedir, mypy_path):
+        # type: (str, str) -> bool
+        """Determine if `original_filedir` exists in a directory from `mypy_path`.
+        """
+        return os.path.commonprefix([original_filedir, mypy_path]) == mypy_path
 
 class MyPy3Runner(MyPy2Runner):
 
