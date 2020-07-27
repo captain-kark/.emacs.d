@@ -98,6 +98,15 @@
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 
+(add-to-list 'load-path ".")
+(require 'tty-format)
+
+;; M-x display-ansi-colors to explicitly decode ANSI color escape sequences
+(defun display-ansi-colors ()
+  (interactive)
+  (format-decode-buffer 'ansi-colors))
+(add-to-list 'auto-mode-alist '("\\.color\\'" . display-ansi-colors))
+
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
